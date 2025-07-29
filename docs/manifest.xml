@@ -6,11 +6,11 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="THREDrDB"/>
   <Description DefaultValue="Integrated Database for Excel - Seamlessly integrate SQL queries and API calls into your spreadsheets."/>
-  <IconUrl DefaultValue="https://daviditse.github.io/THREDrSetup/assets/icon-32.png"/>
+  <IconUrl DefaultValue="https://thredr.github.io/THREDrDB/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://raw.githubusercontent.com/DavidItse/THREDrSetup/refs/heads/main/README.md"/>
+  <SupportUrl DefaultValue="https://localhost:3000/README.md"/>
   <AppDomains>
-    <AppDomain>https://DavidItse.github.io/THREDrSetup</AppDomain>
+    <AppDomain>https://localhost:3000</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>

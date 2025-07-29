@@ -6,11 +6,11 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="THREDrDB"/>
   <Description DefaultValue="Integrated Database for Excel - Seamlessly integrate SQL queries and API calls into your spreadsheets."/>
-  <IconUrl DefaultValue="https://DavidItse.github.io/THREDrSetup/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://DavidItse.github.io/THREDrSetup/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://raw.githubusercontent.com/DavidItse/THREDrSetup/refs/heads/main/README.md"/>
+  <IconUrl DefaultValue="https://thredr.github.io/THREDrDB/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://thredr.github.io/THREDrDB/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://thredr.github.io/THREDrDB/README.md"/>
   <AppDomains>
-    <AppDomain>https://DavidItse.github.io/THREDrSetup</AppDomain>
+    <AppDomain>https://thredr.github.io/THREDrDB</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
@@ -21,7 +21,7 @@
     </Sets>
   </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://DavidItse.github.io/THREDrSetup/taskpane.html"/>
+    <SourceLocation DefaultValue="https://thredr.github.io/THREDrDB/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -83,15 +83,15 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://DavidItse.github.io/THREDrSetup/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://DavidItse.github.io/THREDrSetup/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://DavidItse.github.io/THREDrSetup/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://thredr.github.io/THREDrDB/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://thredr.github.io/THREDrDB/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://thredr.github.io/THREDrDB/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Functions.Script.Url" DefaultValue="https://DavidItse.github.io/THREDrSetup/functions.js"/>
-        <bt:Url id="Functions.Metadata.Url" DefaultValue="https://DavidItse.github.io/THREDrSetup/functions.json"/>
+        <bt:Url id="Functions.Script.Url" DefaultValue="https://thredr.github.io/THREDrDB/functions.js"/>
+        <bt:Url id="Functions.Metadata.Url" DefaultValue="https://thredr.github.io/THREDrDB/functions.json"/>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://DavidItse.github.io/THREDrSetup/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://thredr.github.io/THREDrDB/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="Functions.Namespace" DefaultValue="THREDRDB"/>
