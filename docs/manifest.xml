@@ -8,7 +8,7 @@
   <Description DefaultValue="Integrated Database for Excel - Seamlessly integrate SQL queries and API calls into your spreadsheets."/>
   <IconUrl DefaultValue="https://app.thredr.net/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://localhost:3000/README.md"/>
+  <SupportUrl DefaultValue="https://localhost:3000/SUPPORT.md"/>
   <AppDomains>
     <AppDomain>https://app.thredr.net/</AppDomain>
     <AppDomain>https://localhost:3000</AppDomain>

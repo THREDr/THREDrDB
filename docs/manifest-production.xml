@@ -8,7 +8,12 @@
   <Description DefaultValue="Integrated Database for Excel - Seamlessly integrate SQL queries and API calls into your spreadsheets."/>
   <IconUrl DefaultValue="https://app.thredr.net/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://app.thredr.net/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://app.thredr.net/refs/heads/main/README.md"/>
+  <SupportUrl DefaultValue="https://app.thredr.net/SUPPORT.md"/>
+  <!-- Added explicit privacy policy and terms of use links for compliance -->
+  <ExtendedProperties>
+    <Property Name="PrivacyPolicyUrl" Value="https://app.thredr.net/PRIVACY_POLICY.md"/>
+    <Property Name="TermsOfUseUrl" Value="https://app.thredr.net/TERMS_OF_USE.md"/>
+  </ExtendedProperties>
   <AppDomains>
     <AppDomain>https://app.thredr.net/</AppDomain>
     <AppDomain>https://localhost:3000</AppDomain>
