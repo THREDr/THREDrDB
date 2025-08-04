@@ -3,6 +3,7 @@
     "functions": [
         {
             "description": "Export SQLite query result to CSV or XLSX file",
+            "helpUrl": "src/help/custom-functions.html#EXPORTQUERY",
             "id": "EXPORTQUERY",
             "name": "EXPORTQUERY",
             "parameters": [
@@ -54,6 +55,7 @@
         },
         {
             "description": "Refresh THREDr Table - Loads data from Excel range into the database",
+            "helpUrl": "src/help/custom-functions.html#REFRESHTABLE",
             "id": "REFRESHTABLE",
             "name": "REFRESHTABLE",
             "parameters": [
@@ -87,6 +89,7 @@
         },
         {
             "description": "Run SQLite query on THREDr database",
+            "helpUrl": "src/help/custom-functions.html#QUERY",
             "id": "QUERY",
             "name": "QUERY",
             "parameters": [
@@ -144,6 +147,7 @@
         },
         {
             "description": "Run SQLite query on THREDr database (Volatile version - recalculates frequently)",
+            "helpUrl": "src/help/custom-functions.html#VOLATILEQUERY",
             "id": "VOLATILEQUERY",
             "name": "VOLATILEQUERY",
             "options": {
@@ -204,6 +208,7 @@
         },
         {
             "description": "Displays the current time on a regular interval.",
+            "helpUrl": "src/help/custom-functions.html#CLOCK",
             "id": "CLOCK",
             "name": "CLOCK",
             "options": {
@@ -223,6 +228,7 @@
         },
         {
             "description": "API Call function - Makes HTTP requests and optionally loads data into database",
+            "helpUrl": "src/help/custom-functions.html#APICALL",
             "id": "APICALL",
             "name": "APICALL",
             "parameters": [
@@ -268,6 +274,7 @@
         },
         {
             "description": "Sum field from SQLite database based on criteria",
+            "helpUrl": "src/help/custom-functions.html#SUMFIELD",
             "id": "SUMFIELD",
             "name": "SUMFIELD",
             "parameters": [
@@ -306,6 +313,7 @@
         },
         {
             "description": "Lookup value from SQLite database",
+            "helpUrl": "src/help/custom-functions.html#LOOKUP",
             "id": "LOOKUP",
             "name": "LOOKUP",
             "parameters": [
@@ -341,6 +349,7 @@
         },
         {
             "description": "Get list of tables in the database",
+            "helpUrl": "src/help/custom-functions.html#GETTABLELIST",
             "id": "GETTABLELIST",
             "name": "GETTABLELIST",
             "options": {
@@ -361,6 +370,7 @@
         },
         {
             "description": "Returns the current build version timestamp.",
+            "helpUrl": "src/help/custom-functions.html#BUILDVERSION",
             "id": "BUILDVERSION",
             "name": "BUILDVERSION",
             "parameters": [],
