@@ -9,20 +9,11 @@
   <IconUrl DefaultValue="https://app.thredr.net/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://app.thredr.net/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://app.thredr.net/SUPPORT.md"/>
-  <!-- Added explicit privacy policy and terms of use links for compliance -->
-  <ExtendedProperties>
-    <Property Name="PrivacyPolicyUrl" Value="https://app.thredr.net/PRIVACY_POLICY.md"/>
-    <Property Name="TermsOfUseUrl" Value="https://app.thredr.net/TERMS_OF_USE.md"/>
-  </ExtendedProperties>
   <AppDomains>
-    <AppDomain>https://app.thredr.net/</AppDomain>
-    <AppDomain>https://localhost:3000</AppDomain>
+    <AppDomain>https://app.thredr.net</AppDomain>
     <AppDomain>https://login.microsoftonline.com</AppDomain>
     <AppDomain>https://login.windows.net</AppDomain>
     <AppDomain>https://login.live.com</AppDomain>
-    <AppDomain>https://*.microsoftonline.com</AppDomain>
-    <AppDomain>https://*.windows.net</AppDomain>
-    <AppDomain>https://*.live.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
