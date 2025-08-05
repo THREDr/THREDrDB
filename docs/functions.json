@@ -273,6 +273,36 @@
             }
         },
         {
+            "description": "Custom worksheet function to import CSV data into the SQLite database.",
+            "id": "IMPORTCSV",
+            "name": "IMPORTCSV",
+            "parameters": [
+                {
+                    "description": "The path to the CSV file.",
+                    "name": "filePath",
+                    "type": "string"
+                },
+                {
+                    "description": "The name of the table to create.",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Additional criteria for filtering or processing (currently unused).",
+                    "name": "criteria",
+                    "type": "string"
+                },
+                {
+                    "description": "The path to the workbook (used as the database key).",
+                    "name": "workbookPath",
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
             "description": "Sum field from SQLite database based on criteria",
             "helpUrl": "https://app.thredr.net/custom-functions.html#SUMFIELD",
             "id": "SUMFIELD",
