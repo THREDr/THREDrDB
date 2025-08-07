@@ -382,9 +382,6 @@
             "helpUrl": "https://app.thredr.net/custom-functions.html#GETTABLELIST",
             "id": "GETTABLELIST",
             "name": "GETTABLELIST",
-            "options": {
-                "volatile": true
-            },
             "parameters": [
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
