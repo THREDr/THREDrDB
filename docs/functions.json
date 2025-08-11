@@ -20,7 +20,7 @@
                 },
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 },
@@ -72,7 +72,7 @@
                 },
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 },
@@ -106,7 +106,7 @@
                 },
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 },
@@ -167,7 +167,7 @@
                 },
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 },
@@ -245,7 +245,7 @@
                 },
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 },
@@ -263,6 +263,68 @@
                 },
                 {
                     "description": "Cache timeout in seconds (default: 600 = 10 minutes)",
+                    "name": "cacheTimeoutSeconds",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Advanced API Call function - Supports prompt, API key, secret, and token caching.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#APICALLADV",
+            "id": "APICALLADV",
+            "name": "APICALLADV",
+            "parameters": [
+                {
+                    "description": "API endpoint URL (e.g., Hugging Face model endpoint)",
+                    "name": "url",
+                    "type": "string"
+                },
+                {
+                    "description": "The prompt or input for the API",
+                    "name": "prompt",
+                    "type": "string"
+                },
+                {
+                    "description": "The API key (e.g., Hugging Face token)",
+                    "name": "apiKey",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional table processing: \r\n- Empty/null: Returns JSON formatted as tree-style Excel layout\r\n- 'auto' or 'table': Auto-converts JSON to Excel table format\r\n- 'alltables': Loads all arrays in JSON to database tables\r\n- Specific name: Extracts that property from JSON response",
+                    "name": "tableName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional secret or password for authentication",
+                    "name": "secret",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Optional API name prefix for tables",
+                    "name": "apiName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Cache timeout for token in seconds (default: 3600)",
                     "name": "cacheTimeoutSeconds",
                     "optional": true,
                     "type": "number"
@@ -294,7 +356,7 @@
                 },
                 {
                     "description": "The path to the workbook (used as the database key).",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "type": "string"
                 }
             ],
@@ -326,7 +388,7 @@
                 },
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 },
@@ -364,7 +426,7 @@
                 },
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 },
@@ -385,7 +447,7 @@
             "parameters": [
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",
-                    "name": "workbookPath",
+                    "name": "databaseName",
                     "optional": true,
                     "type": "string"
                 }
