@@ -33,11 +33,11 @@
   <div class="function-section" id="EXPORTQUERY">
     <h2>EXPORTQUERY</h2>
     <p><b>Description:</b> Export SQLite query result to CSV or XLSX file</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.EXPORTQUERY(query, [incHeaders], [workbookPath], [debugging], [exportType], [fileName], [prerequisiteRange])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.EXPORTQUERY(query, [incHeaders], [databaseName], [debugging], [exportType], [fileName], [prerequisiteRange])</code></p>
     <ul class="param-list">
       <li><b>query</b> (string): SQLite query to execute</li>
       <li><b>incHeaders</b> (boolean, optional): Include headers in the result (true/false)</li>
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
       <li><b>exportType</b> (string, optional): Export type: "csv" or "xls"</li>
       <li><b>fileName</b> (string, optional): Optional name of the exported file (default: "ExportedQuery")</li>
@@ -49,11 +49,11 @@
   <div class="function-section" id="REFRESHTABLE">
     <h2>REFRESHTABLE</h2>
     <p><b>Description:</b> Refresh THREDr Table - Loads data from Excel range into the database</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.REFRESHTABLE(tableData, tableName, [workbookPath], [prerequisiteRange])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.REFRESHTABLE(tableData, tableName, [databaseName], [prerequisiteRange])</code></p>
     <ul class="param-list">
       <li><b>tableData</b> (any, matrix): The Excel range data to load (2D array)</li>
       <li><b>tableName</b> (string): Name to give the table in the database</li>
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
     </ul>
     <p><b>Returns:</b> Timestamp of refresh (string)</p>
@@ -62,11 +62,11 @@
   <div class="function-section" id="QUERY">
     <h2>QUERY</h2>
     <p><b>Description:</b> Run SQLite query on THREDr database</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.QUERY(query, [incHeaders], [workbookPath], [debugging], [queryDefinition], [returnDefinition], [returnRows], [prerequisiteRange])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.QUERY(query, [incHeaders], [databaseName], [debugging], [queryDefinition], [returnDefinition], [returnRows], [prerequisiteRange])</code></p>
     <ul class="param-list">
       <li><b>query</b> (string): SQLite query to execute</li>
       <li><b>incHeaders</b> (boolean, optional): Include headers in the result (true/false)</li>
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
       <li><b>queryDefinition</b> (string, optional): Optional name to save this query as a view</li>
       <li><b>returnDefinition</b> (boolean, optional): Return the query definition name instead of data (true/false)</li>
@@ -79,11 +79,11 @@
   <div class="function-section" id="VOLATILEQUERY">
     <h2>VOLATILEQUERY</h2>
     <p><b>Description:</b> Run SQLite query on THREDr database (Volatile version - recalculates frequently)</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.VOLATILEQUERY(query, [incHeaders], [workbookPath], [debugging], [queryDefinition], [returnDefinition], [returnRows], [prerequisiteRange])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.VOLATILEQUERY(query, [incHeaders], [databaseName], [debugging], [queryDefinition], [returnDefinition], [returnRows], [prerequisiteRange])</code></p>
     <ul class="param-list">
       <li><b>query</b> (string): SQLite query to execute</li>
       <li><b>incHeaders</b> (boolean, optional): Include headers in the result (true/false)</li>
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
       <li><b>queryDefinition</b> (string, optional): Optional name to save this query as a view</li>
       <li><b>returnDefinition</b> (boolean, optional): Return the query definition name instead of data (true/false)</li>
@@ -106,11 +106,11 @@
   <div class="function-section" id="APICALL">
     <h2>APICALL</h2>
     <p><b>Description:</b> API Call function - Makes HTTP requests and optionally loads data into database</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.APICALL(url, [tableName], [workbookPath], [prerequisiteRange], [apiName], [cacheTimeoutSeconds])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.APICALL(url, [tableName], [databaseName], [prerequisiteRange], [apiName], [cacheTimeoutSeconds])</code></p>
     <ul class="param-list">
       <li><b>url</b> (string): API URL to call</li>
       <li><b>tableName</b> (string, optional): Table processing (see docs)</li>
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
       <li><b>apiName</b> (string, optional): Optional API name prefix for tables</li>
       <li><b>cacheTimeoutSeconds</b> (number, optional): Cache timeout in seconds (default: 600 = 10 minutes)</li>
@@ -121,12 +121,12 @@
   <div class="function-section" id="SUMFIELD">
     <h2>SUMFIELD</h2>
     <p><b>Description:</b> Sum field from SQLite database based on criteria</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.SUMFIELD(tableName, fieldName, [whereClause], [workbookPath], [debugging])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.SUMFIELD(tableName, fieldName, [whereClause], [databaseName], [debugging])</code></p>
     <ul class="param-list">
       <li><b>tableName</b> (string): Table name to sum from</li>
       <li><b>fieldName</b> (string): Field name to sum</li>
       <li><b>whereClause</b> (string, optional): Optional WHERE clause for filtering</li>
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
     </ul>
     <p><b>Returns:</b> Sum (number)</p>
@@ -135,12 +135,12 @@
   <div class="function-section" id="LOOKUP">
     <h2>LOOKUP</h2>
     <p><b>Description:</b> Lookup value from SQLite database</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.LOOKUP(tableName, returnField, whereClause, [workbookPath], [debugging])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.LOOKUP(tableName, returnField, whereClause, [databaseName], [debugging])</code></p>
     <ul class="param-list">
       <li><b>tableName</b> (string): Table name to lookup from</li>
       <li><b>returnField</b> (string): Field name to return</li>
       <li><b>whereClause</b> (string): WHERE clause for matching</li>
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
     </ul>
     <p><b>Returns:</b> Lookup result (any)</p>
@@ -149,9 +149,9 @@
   <div class="function-section" id="GETTABLELIST">
     <h2>GETTABLELIST</h2>
     <p><b>Description:</b> Get list of tables in the database</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.GETTABLELIST([workbookPath])</code></p>
+    <p><b>Syntax:</b> <code>=THREDRDB.GETTABLELIST([databaseName])</code></p>
     <ul class="param-list">
-      <li><b>workbookPath</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
     </ul>
     <p><b>Returns:</b> Table list (matrix of strings)</p>
   </div>
