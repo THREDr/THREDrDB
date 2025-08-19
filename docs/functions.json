@@ -44,7 +44,6 @@
                 },
                 {
                     "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
@@ -79,7 +78,6 @@
                 },
                 {
                     "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
@@ -138,16 +136,9 @@
                 },
                 {
                     "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
-                },
-                {
-                    "description": "If provided, push the result to a table in the workbook with this name",
-                    "name": "toTable",
-                    "optional": true,
-                    "type": "string"
                 }
             ],
             "result": {
@@ -206,16 +197,9 @@
                 },
                 {
                     "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
-                },
-                {
-                    "description": "Whether to cache the result (default: false)",
-                    "name": "cacheResult",
-                    "optional": true,
-                    "type": "boolean"
                 }
             ],
             "result": {
@@ -267,7 +251,6 @@
                 },
                 {
                     "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
@@ -330,7 +313,6 @@
                 },
                 {
                     "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
