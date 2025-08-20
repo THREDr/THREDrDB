@@ -61,13 +61,16 @@
             "name": "REFRESHTABLE",
             "parameters": [
                 {
-                    "description": "The Excel range data to load (2D array) or the name of a table (string)",
+                    "description": "The Excel range data to load (2D array)",
+                    "dimensionality": "matrix",
                     "name": "tableData",
+                    "optional": true,
                     "type": "any"
                 },
                 {
-                    "description": "Name to give the table in the database",
+                    "description": "Name to give the table in the database, or to look up if tableData is not provided",
                     "name": "tableName",
+                    "optional": true,
                     "type": "string"
                 },
                 {
