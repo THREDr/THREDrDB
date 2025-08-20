@@ -61,8 +61,7 @@
             "name": "REFRESHTABLE",
             "parameters": [
                 {
-                    "description": "The Excel range data to load (2D array)",
-                    "dimensionality": "matrix",
+                    "description": "The Excel range data to load (2D array) or the name of a table (string)",
                     "name": "tableData",
                     "type": "any"
                 },
@@ -137,17 +136,17 @@
                     "type": "boolean"
                 },
                 {
+                    "description": "If provided, push the result to a table in the workbook with this name",
+                    "name": "toTable",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
                     "description": "Optional range reference to ensure calculation dependencies",
                     "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
-                },
-                {
-                    "description": "If provided, push the result to a table in the workbook with this name",
-                    "name": "toTable",
-                    "optional": true,
-                    "type": "string"
                 }
             ],
             "result": {
