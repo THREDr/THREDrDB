@@ -24,6 +24,8 @@
     <li><a href="#VOLATILEQUERY">VOLATILEQUERY</a></li>
     <li><a href="#CLOCK">CLOCK</a></li>
     <li><a href="#APICALL">APICALL</a></li>
+    <li><a href="#APICALLADV">APICALLADV</a></li>
+    <li><a href="#IMPORT">IMPORT</a></li>
     <li><a href="#SUMFIELD">SUMFIELD</a></li>
     <li><a href="#LOOKUP">LOOKUP</a></li>
     <li><a href="#GETTABLELIST">GETTABLELIST</a></li>
@@ -32,36 +34,34 @@
 
   <div class="function-section" id="EXPORTQUERY">
     <h2>EXPORTQUERY</h2>
-    <p><b>Description:</b> Export SQLite query result to CSV or XLSX file</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.EXPORTQUERY(query, [incHeaders], [databaseName], [debugging], [exportType], [fileName], [prerequisiteRange])</code></p>
+    <p><b>Description:</b> Exports the result of a SQLite query to a downloadable file (CSV or JSON).</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.EXPORTQUERY(query, [fileType], [fileName], [incHeaders], [databaseName], [debugging])</code></p>
     <ul class="param-list">
-      <li><b>query</b> (string): SQLite query to execute</li>
-      <li><b>incHeaders</b> (boolean, optional): Include headers in the result (true/false)</li>
+      <li><b>query</b> (string): SQLite query to execute and export</li>
+      <li><b>fileType</b> (string, optional): File type to export ("csv" or "json")</li>
+      <li><b>fileName</b> (string, optional): Name of the exported file</li>
+      <li><b>incHeaders</b> (boolean, optional): Include headers in the export (true/false)</li>
       <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
       <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
-      <li><b>exportType</b> (string, optional): Export type: "csv" or "xls"</li>
-      <li><b>fileName</b> (string, optional): Optional name of the exported file (default: "ExportedQuery")</li>
-      <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
     </ul>
-    <p><b>Returns:</b> Timestamp of export (string)</p>
+    <p><b>Returns:</b> Download link or status (string)</p>
   </div>
 
   <div class="function-section" id="REFRESHTABLE">
     <h2>REFRESHTABLE</h2>
-    <p><b>Description:</b> Refresh THREDr Table - Loads data from Excel range into the database</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.REFRESHTABLE(tableData, tableName, [databaseName], [prerequisiteRange])</code></p>
+    <p><b>Description:</b> Refreshes a table in the SQLite database by re-importing its source data.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.REFRESHTABLE(tableName, [databaseName], [debugging])</code></p>
     <ul class="param-list">
-      <li><b>tableData</b> (any, matrix): The Excel range data to load (2D array)</li>
-      <li><b>tableName</b> (string): Name to give the table in the database</li>
+      <li><b>tableName</b> (string): Name of the table to refresh</li>
       <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
-      <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
+      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
     </ul>
-    <p><b>Returns:</b> Timestamp of refresh (string)</p>
+    <p><b>Returns:</b> Status message (string)</p>
   </div>
 
   <div class="function-section" id="QUERY">
     <h2>QUERY</h2>
-    <p><b>Description:</b> Run SQLite query on THREDr database</p>
+    <p><b>Description:</b> Runs a SQLite query on the THREDr database and returns the result as a matrix.</p>
     <p><b>Syntax:</b> <code>=THREDRDB.QUERY(query, [incHeaders], [databaseName], [debugging], [queryDefinition], [returnDefinition], [returnRows], [prerequisiteRange])</code></p>
     <ul class="param-list">
       <li><b>query</b> (string): SQLite query to execute</li>
@@ -78,7 +78,7 @@
 
   <div class="function-section" id="VOLATILEQUERY">
     <h2>VOLATILEQUERY</h2>
-    <p><b>Description:</b> Run SQLite query on THREDr database (Volatile version - recalculates frequently)</p>
+    <p><b>Description:</b> Runs a volatile SQLite query on the THREDr database (recalculates frequently).</p>
     <p><b>Syntax:</b> <code>=THREDRDB.VOLATILEQUERY(query, [incHeaders], [databaseName], [debugging], [queryDefinition], [returnDefinition], [returnRows], [prerequisiteRange])</code></p>
     <ul class="param-list">
       <li><b>query</b> (string): SQLite query to execute</li>
@@ -103,9 +103,21 @@
     <p><b>Returns:</b> Current time (string, updates automatically)</p>
   </div>
 
+  <div class="function-section" id="PROCESSJSON">
+    <h2>PROCESSJSON</h2>
+    <p><b>Description:</b> Processes a JSON string and returns a matrix or value based on the provided path.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.PROCESSJSON(jsonString, [jsonPath], [asMatrix])</code></p>
+    <ul class="param-list">
+      <li><b>jsonString</b> (string): JSON string to process</li>
+      <li><b>jsonPath</b> (string, optional): JSONPath expression to extract data</li>
+      <li><b>asMatrix</b> (boolean, optional): Return result as matrix (true/false)</li>
+    </ul>
+    <p><b>Returns:</b> Extracted value or matrix</p>
+  </div>
+
   <div class="function-section" id="APICALL">
     <h2>APICALL</h2>
-    <p><b>Description:</b> API Call function - Makes HTTP requests and optionally loads data into database</p>
+    <p><b>Description:</b> Makes an HTTP request and optionally loads data into the database.</p>
     <p><b>Syntax:</b> <code>=THREDRDB.APICALL(url, [tableName], [databaseName], [prerequisiteRange], [apiName], [cacheTimeoutSeconds])</code></p>
     <ul class="param-list">
       <li><b>url</b> (string): API URL to call</li>
@@ -118,9 +130,41 @@
     <p><b>Returns:</b> API result (matrix)</p>
   </div>
 
+  <div class="function-section" id="APICALLADV">
+    <h2>APICALLADV</h2>
+    <p><b>Description:</b> Advanced API call with custom HTTP method, headers, and body.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.APICALLADV(url, [method], [headers], [body], [tableName], [databaseName], [prerequisiteRange], [apiName], [cacheTimeoutSeconds])</code></p>
+    <ul class="param-list">
+      <li><b>url</b> (string): API URL to call</li>
+      <li><b>method</b> (string, optional): HTTP method (GET, POST, etc.)</li>
+      <li><b>headers</b> (string, optional): HTTP headers as JSON string</li>
+      <li><b>body</b> (string, optional): HTTP request body</li>
+      <li><b>tableName</b> (string, optional): Table processing (see docs)</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
+      <li><b>apiName</b> (string, optional): Optional API name prefix for tables</li>
+      <li><b>cacheTimeoutSeconds</b> (number, optional): Cache timeout in seconds (default: 600 = 10 minutes)</li>
+    </ul>
+    <p><b>Returns:</b> API result (matrix)</p>
+  </div>
+
+  <div class="function-section" id="IMPORT">
+    <h2>IMPORT</h2>
+    <p><b>Description:</b> Imports data from a supported file (CSV, XLSX, JSON) into the SQLite database.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.IMPORT(filePath, [tableName], [databaseName], [options], [debugging])</code></p>
+    <ul class="param-list">
+      <li><b>filePath</b> (string): Path or URL to the file to import</li>
+      <li><b>tableName</b> (string, optional): Name of the table to import into</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>options</b> (string, optional): Import options as JSON string</li>
+      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
+    </ul>
+    <p><b>Returns:</b> Status message (string)</p>
+  </div>
+
   <div class="function-section" id="SUMFIELD">
     <h2>SUMFIELD</h2>
-    <p><b>Description:</b> Sum field from SQLite database based on criteria</p>
+    <p><b>Description:</b> Sums a field from a SQLite database table based on criteria.</p>
     <p><b>Syntax:</b> <code>=THREDRDB.SUMFIELD(tableName, fieldName, [whereClause], [databaseName], [debugging])</code></p>
     <ul class="param-list">
       <li><b>tableName</b> (string): Table name to sum from</li>
@@ -134,7 +178,7 @@
 
   <div class="function-section" id="LOOKUP">
     <h2>LOOKUP</h2>
-    <p><b>Description:</b> Lookup value from SQLite database</p>
+    <p><b>Description:</b> Looks up a value from a SQLite database table.</p>
     <p><b>Syntax:</b> <code>=THREDRDB.LOOKUP(tableName, returnField, whereClause, [databaseName], [debugging])</code></p>
     <ul class="param-list">
       <li><b>tableName</b> (string): Table name to lookup from</li>
@@ -148,7 +192,7 @@
 
   <div class="function-section" id="GETTABLELIST">
     <h2>GETTABLELIST</h2>
-    <p><b>Description:</b> Get list of tables in the database</p>
+    <p><b>Description:</b> Gets a list of tables in the database.</p>
     <p><b>Syntax:</b> <code>=THREDRDB.GETTABLELIST([databaseName])</code></p>
     <ul class="param-list">
       <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>

@@ -245,6 +245,38 @@
             }
         },
         {
+            "description": "Processes JSON data and returns it in a structured format.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#PROCESSJSON",
+            "id": "PROCESSJSON",
+            "name": "PROCESSJSON",
+            "parameters": [
+                {
+                    "description": "The JSON data to process.",
+                    "name": "jsonData",
+                    "type": "any"
+                },
+                {
+                    "description": "The name of the table to create or update.",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "The base name for the table (used for temporary tables).",
+                    "name": "baseName",
+                    "type": "string"
+                },
+                {
+                    "description": "The name of the database to use.",
+                    "name": "dbName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
             "description": "API Call function - Makes HTTP requests and optionally loads data into database",
             "helpUrl": "https://app.thredr.net/custom-functions.html#APICALL",
             "id": "APICALL",
@@ -356,8 +388,8 @@
         },
         {
             "description": "Custom worksheet function to import CSV data into the SQLite database.",
-            "id": "IMPORTCSV",
-            "name": "IMPORTCSV",
+            "id": "IMPORT",
+            "name": "IMPORT",
             "parameters": [
                 {
                     "description": "The path to the CSV file.",
@@ -370,13 +402,14 @@
                     "type": "string"
                 },
                 {
-                    "description": "Additional criteria for filtering or processing (currently unused).",
-                    "name": "criteria",
+                    "description": "The type of file to import (e.g., 'csv', 'xlsx').",
+                    "name": "fileType",
                     "type": "string"
                 },
                 {
                     "description": "The path to the workbook (used as the database key).",
                     "name": "databaseName",
+                    "optional": true,
                     "type": "string"
                 }
             ],
