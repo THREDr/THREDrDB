@@ -29,6 +29,7 @@
     <li><a href="#SUMFIELD">SUMFIELD</a></li>
     <li><a href="#LOOKUP">LOOKUP</a></li>
     <li><a href="#GETTABLELIST">GETTABLELIST</a></li>
+    <li><a href="#GETCOLUMNLIST">GETCOLUMNLIST</a></li>
     <li><a href="#BUILDVERSION">BUILDVERSION</a></li>
   </ul>
 
@@ -198,6 +199,17 @@
       <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
     </ul>
     <p><b>Returns:</b> Table list (matrix of strings)</p>
+  </div>
+
+  <div class="function-section" id="GETCOLUMNLIST">
+    <h2>GETCOLUMNLIST</h2>
+    <p><b>Description:</b> Gets a list of columns in a specific table.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.GETCOLUMNLIST(tableName, [databaseName])</code></p>
+    <ul class="param-list">
+      <li><b>tableName</b> (string): Name of the table to get columns from</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+    </ul>
+    <p><b>Returns:</b> Column list (matrix of strings)</p>
   </div>
 
   <div class="function-section" id="BUILDVERSION">

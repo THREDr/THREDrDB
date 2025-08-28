@@ -493,6 +493,29 @@
             "result": {}
         },
         {
+            "description": "Get list of columns in a table",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#GETCOLUMNLIST",
+            "id": "GETCOLUMNLIST",
+            "name": "GETCOLUMNLIST",
+            "parameters": [
+                {
+                    "description": "Name of the table to get columns from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
             "description": "Get list of tables in the database",
             "helpUrl": "https://app.thredr.net/custom-functions.html#GETTABLELIST",
             "id": "GETTABLELIST",
