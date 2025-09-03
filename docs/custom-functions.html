@@ -22,12 +22,14 @@
     <li><a href="#REFRESHTABLE">REFRESHTABLE</a></li>
     <li><a href="#QUERY">QUERY</a></li>
     <li><a href="#VOLATILEQUERY">VOLATILEQUERY</a></li>
+    <li><a href="#LOOKUP">LOOKUP</a></li>
+    <li><a href="#VOLATILELOOKUP">VOLATILELOOKUP</a></li>
+    <li><a href="#SUMFIELD">SUMFIELD</a></li>
+    <li><a href="#VOLATILESUMFIELD">VOLATILESUMFIELD</a></li>
     <li><a href="#CLOCK">CLOCK</a></li>
     <li><a href="#APICALL">APICALL</a></li>
     <li><a href="#APICALLADV">APICALLADV</a></li>
-    <li><a href="#IMPORT">IMPORT</a></li>
-    <li><a href="#SUMFIELD">SUMFIELD</a></li>
-    <li><a href="#LOOKUP">LOOKUP</a></li>
+    <li><a href="#IMPORT">IMPORT</a></li> 
     <li><a href="#GETTABLELIST">GETTABLELIST</a></li>
     <li><a href="#GETCOLUMNLIST">GETCOLUMNLIST</a></li>
     <li><a href="#BUILDVERSION">BUILDVERSION</a></li>
@@ -79,7 +81,7 @@
 
   <div class="function-section" id="VOLATILEQUERY">
     <h2>VOLATILEQUERY</h2>
-    <p><b>Description:</b> Runs a volatile SQLite query on the THREDr database (recalculates frequently).</p>
+    <p><b>Description:</b> Runs a volatile SQLite query on the THREDr database (recalculates frequently). The results are not cached to ensure up to date results at all times regardless of input parameters.</p>
     <p><b>Syntax:</b> <code>=THREDRDB.VOLATILEQUERY(query, [incHeaders], [databaseName], [debugging], [queryDefinition], [returnDefinition], [returnRows], [prerequisiteRange])</code></p>
     <ul class="param-list">
       <li><b>query</b> (string): SQLite query to execute</li>
@@ -92,6 +94,65 @@
       <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
     </ul>
     <p><b>Returns:</b> Query result (matrix)</p>
+  </div>
+<div class="function-section" id="LOOKUP">
+    <h2>LOOKUP</h2>
+    <p><b>Description:</b> Looks up a value from a SQLite database table.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.LOOKUP(tableName, returnField, whereClause, [databaseName], [debugging])</code></p>
+    <ul class="param-list">
+      <li><b>tableName</b> (string): Table name to lookup from</li>
+      <li><b>returnField</b> (string): Field name to return</li>
+      <li><b>whereClause</b> (string): WHERE clause for matching</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
+      <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
+    </ul>
+    <p><b>Returns:</b> Lookup result (any)</p>
+  </div>
+
+  <div class="function-section" id="VOLATILELOOKUP">
+    <h2>VOLATILELOOKUP</h2>
+    <p><b>Description:</b> Volatile version of LOOKUP. Volatile functions run every time Excel calculates. The results are not cached to ensure up to date results at all times regardless of input parameters.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.VOLATILELOOKUP(tableName, returnField, whereClause, [databaseName], [debugging], [prerequisiteRange])</code></p>
+    <p><b>Returns:</b> Lookup result (any)</p>
+    <ul class="param-list">
+      <li><b>tableName</b> (string): Table name to lookup from</li>
+      <li><b>returnField</b> (string): Field name to return</li>
+      <li><b>whereClause</b> (string): WHERE clause for matching</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
+      <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
+    </ul>
+  </div>
+
+  <div class="function-section" id="SUMFIELD">
+    <h2>SUMFIELD</h2>
+    <p><b>Description:</b> Sums a field from a SQLite database table based on criteria.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.SUMFIELD(tableName, fieldName, [whereClause], [databaseName], [debugging], [prerequisiteRange])</code></p>
+    <ul class="param-list">
+      <li><b>tableName</b> (string): Table name to sum from</li>
+      <li><b>fieldName</b> (string): Field name to sum</li>
+      <li><b>whereClause</b> (string, optional): Optional WHERE clause for filtering</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
+      <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
+    </ul>
+    <p><b>Returns:</b> Sum (number)</p>
+  </div>
+  
+  <div class="function-section" id="VOLATILESUMFIELD">
+    <h2>VOLATILESUMFIELD</h2>
+    <p><b>Description:</b> Volatile version of the SUMFIELD function. Results are not cached to ensure up to date results at all times regardless of input parameters.</p>
+    <p><b>Syntax:</b> <code>=THREDRDB.VOLATILESUMFIELD(tableName, fieldName, [whereClause], [databaseName], [debugging], [prerequisiteRange])</code></p>
+    <p><b>Returns:</b> Sum (number)</p>
+    <ul class="param-list">
+      <li><b>tableName</b> (string): Table name to sum from</li>
+      <li><b>fieldName</b> (string): Field name to sum</li>
+      <li><b>whereClause</b> (string, optional): Optional WHERE clause for filtering</li>
+      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
+      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
+      <li><b>prerequisiteRange</b> (any, optional): Optional range reference to ensure calculation dependencies</li>
+    </ul>
   </div>
 
   <div class="function-section" id="CLOCK">
@@ -161,34 +222,6 @@
       <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
     </ul>
     <p><b>Returns:</b> Status message (string)</p>
-  </div>
-
-  <div class="function-section" id="SUMFIELD">
-    <h2>SUMFIELD</h2>
-    <p><b>Description:</b> Sums a field from a SQLite database table based on criteria.</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.SUMFIELD(tableName, fieldName, [whereClause], [databaseName], [debugging])</code></p>
-    <ul class="param-list">
-      <li><b>tableName</b> (string): Table name to sum from</li>
-      <li><b>fieldName</b> (string): Field name to sum</li>
-      <li><b>whereClause</b> (string, optional): Optional WHERE clause for filtering</li>
-      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
-      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
-    </ul>
-    <p><b>Returns:</b> Sum (number)</p>
-  </div>
-
-  <div class="function-section" id="LOOKUP">
-    <h2>LOOKUP</h2>
-    <p><b>Description:</b> Looks up a value from a SQLite database table.</p>
-    <p><b>Syntax:</b> <code>=THREDRDB.LOOKUP(tableName, returnField, whereClause, [databaseName], [debugging])</code></p>
-    <ul class="param-list">
-      <li><b>tableName</b> (string): Table name to lookup from</li>
-      <li><b>returnField</b> (string): Field name to return</li>
-      <li><b>whereClause</b> (string): WHERE clause for matching</li>
-      <li><b>databaseName</b> (string, optional): Optional workbook path (uses current workbook if empty)</li>
-      <li><b>debugging</b> (boolean, optional): Show error messages for debugging (true/false)</li>
-    </ul>
-    <p><b>Returns:</b> Lookup result (any)</p>
   </div>
 
   <div class="function-section" id="GETTABLELIST">

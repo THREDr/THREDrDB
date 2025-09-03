@@ -157,7 +157,7 @@
             }
         },
         {
-            "description": "Run SQLite query on THREDr database (Volatile version - recalculates frequently)",
+            "description": "Run SQLite query on THREDr database (Volatile version - recalculates frequently - results are not cached)",
             "helpUrl": "https://app.thredr.net/custom-functions.html#VOLATILEQUERY",
             "id": "VOLATILEQUERY",
             "name": "VOLATILEQUERY",
@@ -207,17 +207,17 @@
                     "type": "boolean"
                 },
                 {
+                    "description": "Whether to cache the result (default: false)",
+                    "name": "cacheResult",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
                     "description": "Optional range reference to ensure calculation dependencies",
                     "dimensionality": "matrix",
                     "name": "prerequisiteRange",
                     "optional": true,
                     "type": "any"
-                },
-                {
-                    "description": "Whether to cache the result (default: false)",
-                    "name": "cacheResult",
-                    "optional": true,
-                    "type": "boolean"
                 }
             ],
             "result": {
@@ -300,13 +300,6 @@
                     "type": "string"
                 },
                 {
-                    "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
-                    "name": "prerequisiteRange",
-                    "optional": true,
-                    "type": "any"
-                },
-                {
                     "description": "Optional API name prefix for tables",
                     "name": "apiName",
                     "optional": true,
@@ -317,6 +310,13 @@
                     "name": "cacheTimeoutSeconds",
                     "optional": true,
                     "type": "number"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
                 }
             ],
             "result": {
@@ -363,13 +363,6 @@
                     "type": "string"
                 },
                 {
-                    "description": "Optional range reference to ensure calculation dependencies",
-                    "dimensionality": "matrix",
-                    "name": "prerequisiteRange",
-                    "optional": true,
-                    "type": "any"
-                },
-                {
                     "description": "Optional API name prefix for tables",
                     "name": "apiName",
                     "optional": true,
@@ -380,6 +373,13 @@
                     "name": "cacheTimeoutSeconds",
                     "optional": true,
                     "type": "number"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
                 }
             ],
             "result": {
@@ -450,6 +450,62 @@
                     "name": "debugging",
                     "optional": true,
                     "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Volatile version of the SUMFIELD function. Results are not cached.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#VOLATILESUMFIELD",
+            "id": "VOLATILESUMFIELD",
+            "name": "VOLATILESUMFIELD",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [
+                {
+                    "description": "Table name to sum from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to sum",
+                    "name": "fieldName",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional WHERE clause for filtering",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
                 }
             ],
             "result": {
@@ -461,6 +517,55 @@
             "helpUrl": "https://app.thredr.net/custom-functions.html#LOOKUP",
             "id": "LOOKUP",
             "name": "LOOKUP",
+            "parameters": [
+                {
+                    "description": "Table name to lookup from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to return",
+                    "name": "returnField",
+                    "type": "string"
+                },
+                {
+                    "description": "WHERE clause for matching",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Volatile version of Lookup. Results are not cached.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#LOOKUP",
+            "id": "VOLATILELOOKUP",
+            "name": "VOLATILELOOKUP",
+            "options": {
+                "volatile": true
+            },
             "parameters": [
                 {
                     "description": "Table name to lookup from",
@@ -488,9 +593,18 @@
                     "name": "debugging",
                     "optional": true,
                     "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
                 }
             ],
-            "result": {}
+            "result": {
+                "dimensionality": "matrix"
+            }
         },
         {
             "description": "Get list of columns in a table",
