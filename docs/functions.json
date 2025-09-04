@@ -330,22 +330,23 @@
             "name": "APICALLADV",
             "parameters": [
                 {
-                    "description": "API endpoint URL (e.g., Hugging Face model endpoint)",
+                    "description": "API endpoint URL",
                     "name": "url",
                     "type": "string"
                 },
                 {
-                    "description": "The prompt or input for the API",
+                    "description": "JSON string for the request body (e.g., '{\"text\":\"I love it\",\"return_all_scores\":false}')",
                     "name": "prompt",
                     "type": "string"
                 },
                 {
-                    "description": "The API key (e.g., Hugging Face token)",
+                    "description": "The API key (optional)",
                     "name": "apiKey",
+                    "optional": true,
                     "type": "string"
                 },
                 {
-                    "description": "Optional table processing: \r\n- Empty/null: Returns JSON formatted as tree-style Excel layout\r\n- 'auto' or 'table': Auto-converts JSON to Excel table format\r\n- 'alltables': Loads all arrays in JSON to database tables\r\n- Specific name: Extracts that property from JSON response",
+                    "description": "Optional table processing",
                     "name": "tableName",
                     "optional": true,
                     "type": "string"
@@ -365,6 +366,12 @@
                 {
                     "description": "Optional API name prefix for tables",
                     "name": "apiName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional JSON string for extra headers",
+                    "name": "extraHeadersJson",
                     "optional": true,
                     "type": "string"
                 },
