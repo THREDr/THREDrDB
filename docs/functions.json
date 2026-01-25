@@ -80,6 +80,18 @@
                     "type": "string"
                 },
                 {
+                    "description": "Whether the first row contains headers (true/false)",
+                    "name": "skipHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Cache timeout in seconds (default: 60)",
+                    "name": "cacheTimeoutSeconds",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
                     "description": "Optional range reference to ensure calculation dependencies",
                     "dimensionality": "matrix",
                     "name": "prerequisiteRange",
