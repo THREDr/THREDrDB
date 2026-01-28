@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THREDr Demos</title>
+    <style>
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #323130;
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #106ebe;
+            margin-top: 30px;
+        }
+        .intro {
+            background-color: #f3f2f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .demo-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #edebe9;
+            border-radius: 4px;
+            background-color: #faf9f8;
+        }
+        .demo-title {
+            color: #106ebe;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .demo-description {
+            margin-bottom: 15px;
+            color: #605e5c;
+        }
+        .demo-button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-family: "Segoe UI", sans-serif;
+            transition: background-color 0.2s;
+        }
+        .demo-button:hover {
+            background-color: #106ebe;
+        }
+        .demo-button:active {
+            background-color: #005a9e;
+        }
+        .demo-steps {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        .demo-steps li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+            color: #605e5c;
+        }
+        .demo-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0078d4;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 THREDr Demos</h1>
+    
+    <div class="intro">
+        <p><strong>Welcome to THREDr Demos!</strong></p>
+        <p>These interactive demonstrations will help you explore the power of THREDrDB by creating sample databases and queries. Each demo automatically builds a complete database structure that you can explore and learn from.</p>
+    </div>
+
+    <h2>Available Demos</h2>
+
+    <div class="demo-container">
+        <div class="demo-title">📮 Address Database Demo</div>
+        <div class="demo-description">
+            This demo creates a complete relational address database with linked tables. It demonstrates table relationships, foreign keys, and complex queries to combine data from multiple tables.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates a ZipCodes table with zip codes, cities, and states</li>
+            <li>Creates a StreetAddresses table linked to ZipCodes</li>
+            <li>Creates a Names table with personal information</li>
+            <li>Creates an AddressBook table linking names to addresses</li>
+            <li>Generates a complete query showing all names with full addresses</li>
+        </ul>
+        <button class="demo-button" id="run-address-demo">Run Address Database Demo</button>
+    </div>
+
+    <!-- Placeholder for future demos -->
+    <div class="demo-container" style="opacity: 0.6;">
+        <div class="demo-title">🛒 E-Commerce Database Demo (Coming Soon)</div>
+        <div class="demo-description">
+            Learn about inventory management, orders, and customer relationships with a sample e-commerce database.
+        </div>
+    </div>
+
+    <div class="demo-container" style="opacity: 0.6;">
+        <div class="demo-title">📊 Sales Analytics Demo (Coming Soon)</div>
+        <div class="demo-description">
+            Explore complex queries, aggregations, and reporting with a sample sales database.
+        </div>
+    </div>
+
+    <script>
+        // Set up message passing with parent taskpane
+        document.getElementById('run-address-demo').addEventListener('click', function() {
+            // Post message to parent window (taskpane)
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'address-database' }, '*');
+            }
+        });
+    </script>
+</body>
+</html>
