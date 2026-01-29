@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THREDr API Function Demos</title>
+    <style>
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #323130;
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        .back-link {
+            color: #0078d4;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .intro {
+            background-color: #f3f2f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .demo-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #edebe9;
+            border-radius: 4px;
+            background-color: #faf9f8;
+        }
+        .demo-title {
+            color: #106ebe;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .demo-description {
+            margin-bottom: 15px;
+            color: #605e5c;
+        }
+        .demo-button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-family: "Segoe UI", sans-serif;
+            transition: background-color 0.2s;
+        }
+        .demo-button:hover {
+            background-color: #106ebe;
+        }
+        .demo-button:active {
+            background-color: #005a9e;
+        }
+        .demo-steps {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        .demo-steps li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+            color: #605e5c;
+        }
+        .demo-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0078d4;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="back-link" id="back-link">← Back to All Demos</a>
+    
+    <h1>🌐 API Function Demos</h1>
+    
+    <div class="intro">
+        <p>These demos showcase how to integrate external APIs with THREDrDB, create live data feeds using the CLOCK function, and visualize real-time data.</p>
+    </div>
+
+    <div class="demo-container" style="opacity: 0.6;">
+        <div class="demo-title">📈 Live Stock Price Tracker (Coming Soon)</div>
+        <div class="demo-description">
+            Create a live stock price tracker that automatically updates using API calls and the CLOCK function to trigger periodic refreshes.
+        </div>
+        <ul class="demo-steps">
+            <li>Fetches real-time stock prices from a financial API</li>
+            <li>Uses CLOCK function to create automatic refresh loop</li>
+            <li>Stores price history in THREDrDB</li>
+            <li>Creates a live chart showing price changes over time</li>
+            <li>Continues updating as long as the workbook is open</li>
+        </ul>
+        <button class="demo-button" disabled>Coming Soon</button>
+    </div>
+
+    <div class="demo-container" style="opacity: 0.6;">
+        <div class="demo-title">🌤️ Live Weather Tracker (Coming Soon)</div>
+        <div class="demo-description">
+            Monitor live weather conditions using the OpenWeather API with automatic periodic updates and historical tracking.
+        </div>
+        <ul class="demo-steps">
+            <li>Calls OpenWeather API for current conditions</li>
+            <li>Uses CLOCK function for continuous monitoring</li>
+            <li>Tracks temperature, humidity, and conditions over time</li>
+            <li>Generates live weather charts and trends</li>
+            <li>Compares multiple locations simultaneously</li>
+        </ul>
+        <button class="demo-button" disabled>Coming Soon</button>
+    </div>
+
+    <script>
+        // Back button
+        document.getElementById('back-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'NAVIGATE', page: 'demos' }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -19,68 +19,63 @@
             border-bottom: 2px solid #0078d4;
             padding-bottom: 10px;
         }
-        h2 {
-            color: #106ebe;
-            margin-top: 30px;
-        }
         .intro {
             background-color: #f3f2f1;
             padding: 15px;
             border-radius: 4px;
             margin: 20px 0;
         }
-        .demo-container {
-            margin: 30px 0;
-            padding: 20px;
-            border: 1px solid #edebe9;
-            border-radius: 4px;
-            background-color: #faf9f8;
+        .category-container {
+            margin: 25px 0;
+            padding: 25px;
+            border: 2px solid #0078d4;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #faf9f8 0%, #ffffff 100%);
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .demo-title {
-            color: #106ebe;
-            font-size: 1.2em;
+        .category-container:hover {
+            border-color: #106ebe;
+            box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
+            transform: translateY(-2px);
+        }
+        .category-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .category-title {
+            color: #0078d4;
+            font-size: 1.4em;
             font-weight: 600;
             margin-bottom: 10px;
         }
-        .demo-description {
+        .category-description {
+            color: #605e5c;
             margin-bottom: 15px;
-            color: #605e5c;
+            line-height: 1.5;
         }
-        .demo-button {
-            background-color: #0078d4;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 2px;
-            font-family: "Segoe UI", sans-serif;
-            transition: background-color 0.2s;
-        }
-        .demo-button:hover {
-            background-color: #106ebe;
-        }
-        .demo-button:active {
-            background-color: #005a9e;
-        }
-        .demo-steps {
-            list-style-type: none;
-            padding-left: 0;
-            margin-top: 10px;
-        }
-        .demo-steps li {
-            padding: 5px 0;
-            padding-left: 25px;
-            position: relative;
+        .category-examples {
+            color: #797775;
             font-size: 0.9em;
-            color: #605e5c;
+            font-style: italic;
         }
-        .demo-steps li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #0078d4;
-            font-weight: bold;
+        .coming-soon {
+            opacity: 0.6;
+            cursor: default;
+        }
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #ffc107;
+            color: #323130;
+            font-size: 0.75em;
+            font-weight: 600;
+            border-radius: 3px;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -89,47 +84,75 @@
     
     <div class="intro">
         <p><strong>Welcome to THREDr Demos!</strong></p>
-        <p>These interactive demonstrations will help you explore the power of THREDrDB by creating sample databases and queries. Each demo automatically builds a complete database structure that you can explore and learn from.</p>
+        <p>Explore the power of THREDrDB through interactive demonstrations. Choose a category below to see examples and run demos.</p>
     </div>
 
-    <h2>Available Demos</h2>
-
-    <div class="demo-container">
-        <div class="demo-title">📮 Address Database Demo</div>
-        <div class="demo-description">
-            This demo creates a complete relational address database with linked tables. It demonstrates table relationships, foreign keys, and complex queries to combine data from multiple tables.
+    <div class="category-container" id="relational-category">
+        <div class="category-icon">🗄️</div>
+        <div class="category-title">Relational Databases</div>
+        <div class="category-description">
+            Learn database fundamentals with working examples of table relationships, foreign keys, joins, and complex queries.
         </div>
-        <ul class="demo-steps">
-            <li>Creates a ZipCodes table with zip codes, cities, and states</li>
-            <li>Creates a StreetAddresses table linked to ZipCodes</li>
-            <li>Creates a Names table with personal information</li>
-            <li>Creates an AddressBook table linking names to addresses</li>
-            <li>Generates a complete query showing all names with full addresses</li>
-        </ul>
-        <button class="demo-button" id="run-address-demo">Run Address Database Demo</button>
-    </div>
-
-    <!-- Placeholder for future demos -->
-    <div class="demo-container" style="opacity: 0.6;">
-        <div class="demo-title">🛒 E-Commerce Database Demo (Coming Soon)</div>
-        <div class="demo-description">
-            Learn about inventory management, orders, and customer relationships with a sample e-commerce database.
+        <div class="category-examples">
+            Examples: Address Database, E-Commerce Orders, Sales Analytics
         </div>
     </div>
 
-    <div class="demo-container" style="opacity: 0.6;">
-        <div class="demo-title">📊 Sales Analytics Demo (Coming Soon)</div>
-        <div class="demo-description">
-            Explore complex queries, aggregations, and reporting with a sample sales database.
+    <div class="category-container coming-soon" id="api-category">
+        <div class="category-icon">🌐</div>
+        <div class="category-title">
+            API Functions & Live Data
+            <span class="badge">COMING SOON</span>
+        </div>
+        <div class="category-description">
+            Integrate external APIs, create live data feeds with automatic updates, and build real-time dashboards.
+        </div>
+        <div class="category-examples">
+            Examples: Live Stock Price Tracker, Weather Monitoring, Currency Exchange Rates
+        </div>
+    </div>
+
+    <div class="category-container coming-soon" id="engineering-category">
+        <div class="category-icon">⚙️</div>
+        <div class="category-title">
+            Engineering & Simulations
+            <span class="badge">COMING SOON</span>
+        </div>
+        <div class="category-description">
+            Advanced calculations using iterative and circular logic for engineering problems and simulations.
+        </div>
+        <div class="category-examples">
+            Examples: Heat & Mass Balance, Beam Deflection Analysis, Process Optimization
         </div>
     </div>
 
     <script>
-        // Set up message passing with parent taskpane
-        document.getElementById('run-address-demo').addEventListener('click', function() {
-            // Post message to parent window (taskpane)
+        // Navigation handlers
+        document.getElementById('relational-category').addEventListener('click', function() {
             if (window.parent && window.parent !== window) {
-                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'address-database' }, '*');
+                window.parent.postMessage({ type: 'NAVIGATE', page: 'demos-relational' }, '*');
+            }
+        });
+        
+        document.getElementById('api-category').addEventListener('click', function() {
+            if (!this.classList.contains('coming-soon')) {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ type: 'NAVIGATE', page: 'demos-api' }, '*');
+                }
+            }
+        });
+        
+        document.getElementById('engineering-category').addEventListener('click', function() {
+            if (!this.classList.contains('coming-soon')) {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ type: 'NAVIGATE', page: 'demos-engineering' }, '*');
+                }
+            }
+        });
+        
+        document.getElementById('run-ecommerce-demo').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'ecommerce' }, '*');
             }
         });
     </script>

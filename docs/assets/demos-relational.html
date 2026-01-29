@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THREDr Relational Database Demos</title>
+    <style>
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #323130;
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        .back-link {
+            color: #0078d4;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .intro {
+            background-color: #f3f2f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .demo-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #edebe9;
+            border-radius: 4px;
+            background-color: #faf9f8;
+        }
+        .demo-title {
+            color: #106ebe;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .demo-description {
+            margin-bottom: 15px;
+            color: #605e5c;
+        }
+        .demo-button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-family: "Segoe UI", sans-serif;
+            transition: background-color 0.2s;
+        }
+        .demo-button:hover {
+            background-color: #106ebe;
+        }
+        .demo-button:active {
+            background-color: #005a9e;
+        }
+        .demo-steps {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        .demo-steps li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+            color: #605e5c;
+        }
+        .demo-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0078d4;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="back-link" id="back-link">← Back to All Demos</a>
+    
+    <h1>🗄️ Relational Database Demos</h1>
+    
+    <div class="intro">
+        <p>These demos showcase relational database concepts including table relationships, foreign keys, joins, and complex queries.</p>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">📮 Address Database Demo</div>
+        <div class="demo-description">
+            This demo creates a complete relational address database with linked tables. It demonstrates table relationships, foreign keys, and complex queries to combine data from multiple tables.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates a ZipCodes table with zip codes, cities, and states</li>
+            <li>Creates a StreetAddresses table linked to ZipCodes</li>
+            <li>Creates a Names table with personal information</li>
+            <li>Creates an AddressBook table linking names to addresses</li>
+            <li>Generates a searchable query showing all names with full addresses</li>
+        </ul>
+        <button class="demo-button" id="run-address-demo">Run Address Database Demo</button>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">🛒 E-Commerce Database Demo</div>
+        <div class="demo-description">
+            Learn about inventory management, orders, and customer relationships with a sample e-commerce database. This demo shows multi-level relationships and aggregation queries.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates a Products table with inventory and pricing</li>
+            <li>Creates a Customers table with contact information</li>
+            <li>Creates an Orders table linked to customers</li>
+            <li>Creates an OrderDetails table linking orders to products</li>
+            <li>Generates queries for order history and inventory analysis</li>
+        </ul>
+        <button class="demo-button" id="run-ecommerce-demo">Run E-Commerce Demo</button>
+    </div>
+
+    <div class="demo-container" style="opacity: 0.6;">
+        <div class="demo-title">📊 Sales Analytics Demo (Coming Soon)</div>
+        <div class="demo-description">
+            Explore complex queries, aggregations, and reporting with a sample sales database.
+        </div>
+    </div>
+
+    <script>
+        // Back button
+        document.getElementById('back-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'NAVIGATE', page: 'demos' }, '*');
+            }
+        });
+        
+        // Demo buttons
+        document.getElementById('run-address-demo').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'address-database' }, '*');
+            }
+        });
+        
+        document.getElementById('run-ecommerce-demo').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'ecommerce' }, '*');
+            }
+        });
+    </script>
+</body>
+</html>
