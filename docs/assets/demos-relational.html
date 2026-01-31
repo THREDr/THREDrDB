@@ -115,25 +115,32 @@
     </div>
 
     <div class="demo-container">
-        <div class="demo-title">🛒 E-Commerce Database Demo</div>
+        <div class="demo-title">� Orders Database Demo</div>
         <div class="demo-description">
-            Learn about inventory management, orders, and customer relationships with a sample e-commerce database. This demo shows multi-level relationships and aggregation queries.
+            Builds on the Address Database to create an orders system. Demonstrates how to abstract customer data to IDs for data protection while maintaining the ability to lookup full customer details. Applicable to e-commerce, contractors, or any business tracking orders.
         </div>
         <ul class="demo-steps">
+            <li>Ensures Address Database exists (creates it if needed)</li>
             <li>Creates a Products table with inventory and pricing</li>
-            <li>Creates a Customers table with contact information</li>
-            <li>Creates an Orders table linked to customers</li>
+            <li>Creates Orders table linking to customer IDs from Address Database</li>
             <li>Creates an OrderDetails table linking orders to products</li>
-            <li>Generates queries for order history and inventory analysis</li>
+            <li>Generates queries joining orders with customer addresses</li>
         </ul>
-        <button class="demo-button" id="run-ecommerce-demo">Run E-Commerce Demo</button>
+        <button class="demo-button" id="run-orders-demo">Run Orders Demo</button>
     </div>
 
-    <div class="demo-container" style="opacity: 0.6;">
-        <div class="demo-title">📊 Sales Analytics Demo (Coming Soon)</div>
+    <div class="demo-container">
+        <div class="demo-title">📊 Sales Analytics Demo</div>
         <div class="demo-description">
-            Explore complex queries, aggregations, and reporting with a sample sales database.
+            Builds on both Address and Orders databases to create sales analytics with aggregations by customer location. Demonstrates complex multi-table joins and grouping operations.
         </div>
+        <ul class="demo-steps">
+            <li>Ensures Address and Orders databases exist (creates them if needed)</li>
+            <li>Creates analytics queries showing sales by city and state</li>
+            <li>Aggregates total orders, unique customers, and revenue by location</li>
+            <li>Demonstrates GROUP BY and aggregate functions (COUNT, SUM, AVG)</li>
+        </ul>
+        <button class="demo-button" id="run-analytics-demo">Run Sales Analytics Demo</button>
     </div>
 
     <script>
@@ -152,9 +159,15 @@
             }
         });
         
-        document.getElementById('run-ecommerce-demo').addEventListener('click', function() {
+        document.getElementById('run-orders-demo').addEventListener('click', function() {
             if (window.parent && window.parent !== window) {
-                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'ecommerce' }, '*');
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'orders' }, '*');
+            }
+        });
+        
+        document.getElementById('run-analytics-demo').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'sales-analytics' }, '*');
             }
         });
     </script>
