@@ -99,19 +99,19 @@
         <p>These demos showcase how to integrate external APIs with THREDrDB, create live data feeds using the CLOCK function, and visualize real-time data.</p>
     </div>
 
-    <div class="demo-container" style="opacity: 0.6;">
-        <div class="demo-title">📈 Live Stock Price Tracker (Coming Soon)</div>
+    <div class="demo-container">
+        <div class="demo-title">📈 Live Stock Price Tracker</div>
         <div class="demo-description">
-            Create a live stock price tracker that automatically updates using API calls and the CLOCK function to trigger periodic refreshes.
+            Create a live stock price tracker that automatically updates using API calls and the CLOCK function to trigger periodic refreshes. Uses Alpha Vantage API to fetch real-time IBM stock data.
         </div>
         <ul class="demo-steps">
-            <li>Fetches real-time stock prices from a financial API</li>
-            <li>Uses CLOCK function to create automatic refresh loop</li>
-            <li>Stores price history in THREDrDB</li>
-            <li>Creates a live chart showing price changes over time</li>
+            <li>Fetches real-time stock prices from Alpha Vantage API (5-minute intervals)</li>
+            <li>Uses CLOCK function to create automatic refresh every 10 seconds</li>
+            <li>Stores price history in THREDrDB for analysis</li>
+            <li>Creates a live line chart showing price changes over time</li>
             <li>Continues updating as long as the workbook is open</li>
         </ul>
-        <button class="demo-button" disabled>Coming Soon</button>
+        <button class="demo-button" id="run-stock-tracker">Run Live Stock Tracker Demo</button>
     </div>
 
     <div class="demo-container" style="opacity: 0.6;">
@@ -135,6 +135,13 @@
             e.preventDefault();
             if (window.parent && window.parent !== window) {
                 window.parent.postMessage({ type: 'NAVIGATE', page: 'demos' }, '*');
+            }
+        });
+        
+        // Stock tracker demo button
+        document.getElementById('run-stock-tracker').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'stock-tracker' }, '*');
             }
         });
     </script>
