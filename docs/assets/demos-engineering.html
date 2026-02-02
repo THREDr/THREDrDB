@@ -99,19 +99,19 @@
         <p>These demos showcase advanced engineering calculations using THREDrDB's iterative and circular logic capabilities. Perfect for process engineering, structural analysis, and complex simulations.</p>
     </div>
 
-    <div class="demo-container" style="opacity: 0.6;">
-        <div class="demo-title">🔥 Heat & Mass Balance Calculator (Coming Soon)</div>
+    <div class="demo-container">
+        <div class="demo-title">🔥 Heat & Mass Balance Simulation</div>
         <div class="demo-description">
-            Solve complex heat and mass balance equations with iterative circular logic to balance three process streams until equilibrium is reached.
+            Process engineering simulation using THREDrDB.RETRIGGER to solve circular dependencies in stream flow calculations. Watch the system automatically converge to a balanced state!
         </div>
         <ul class="demo-steps">
-            <li>Sets up three interconnected process streams</li>
-            <li>Uses iterative calculations to solve circular dependencies</li>
-            <li>Balances mass flow rates and energy transfers</li>
-            <li>Converges to equilibrium within specified tolerance</li>
-            <li>Displays convergence history and final balanced state</li>
+            <li>Creates 3 interdependent process streams with mass, heat, and composition calculations</li>
+            <li>Uses RETRIGGER function for automatic iterative solving (no manual F9!)</li>
+            <li>Implements damping factor for stable convergence (90% new value, 10% old)</li>
+            <li>Shows real-time balance checks for mass and energy conservation</li>
+            <li>Displays convergence chart tracking error magnitude over iterations</li>
         </ul>
-        <button class="demo-button" disabled>Coming Soon</button>
+        <button class="demo-button" id="run-heat-mass-balance">Run Heat & Mass Balance Demo</button>
     </div>
 
     <div class="demo-container" style="opacity: 0.6;">
@@ -135,6 +135,13 @@
             e.preventDefault();
             if (window.parent && window.parent !== window) {
                 window.parent.postMessage({ type: 'NAVIGATE', page: 'demos' }, '*');
+            }
+        });
+        
+        // Heat & Mass Balance demo button
+        document.getElementById('run-heat-mass-balance').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'heat-mass-balance' }, '*');
             }
         });
     </script>

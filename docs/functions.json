@@ -257,6 +257,32 @@
             }
         },
         {
+            "description": "Displays the current time on a regular interval.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#RETRIGGER",
+            "id": "RETRIGGER",
+            "name": "RETRIGGER",
+            "options": {
+                "stream": true
+            },
+            "parameters": [
+                {
+                    "description": "Input to trigger the function",
+                    "dimensionality": "matrix",
+                    "name": "inputTrigger",
+                    "type": "any"
+                },
+                {
+                    "description": "Update interval in seconds (default: 1 second)",
+                    "name": "intervalSeconds",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
             "description": "Processes JSON data and returns it in a structured format.",
             "helpUrl": "https://app.thredr.net/custom-functions.html#PROCESSJSON",
             "id": "PROCESSJSON",
