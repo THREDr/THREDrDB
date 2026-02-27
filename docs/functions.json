@@ -43,6 +43,18 @@
                     "type": "string"
                 },
                 {
+                    "description": "Optional table or view name to export (used instead of query if query is empty)",
+                    "name": "tableOrViewName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional delimiter character for CSV (comma by default)",
+                    "name": "delimiter",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
                     "description": "Optional range reference to ensure calculation dependencies",
                     "dimensionality": "matrix",
                     "name": "prerequisiteRange",
@@ -497,6 +509,18 @@
                     "type": "boolean"
                 },
                 {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
                     "description": "Optional prerequisite range for calculations",
                     "dimensionality": "matrix",
                     "name": "prerequisiteRange",
@@ -546,6 +570,18 @@
                     "type": "boolean"
                 },
                 {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
                     "description": "Optional prerequisite range for calculations",
                     "dimensionality": "matrix",
                     "name": "prerequisiteRange",
@@ -588,6 +624,18 @@
                 {
                     "description": "Show error messages for debugging (true/false)",
                     "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
                     "optional": true,
                     "type": "boolean"
                 },
@@ -640,6 +688,18 @@
                     "type": "boolean"
                 },
                 {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
                     "description": "Optional prerequisite range for calculations",
                     "dimensionality": "matrix",
                     "name": "prerequisiteRange",
@@ -679,6 +739,150 @@
             "helpUrl": "https://app.thredr.net/custom-functions.html#GETTABLELIST",
             "id": "GETTABLELIST",
             "name": "GETTABLELIST",
+            "parameters": [
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Get list of query definitions in the database",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#GETQUERYLIST",
+            "id": "GETQUERYLIST",
+            "name": "GETQUERYLIST",
+            "parameters": [
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Paginate data on forms",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#DATAPAGES",
+            "id": "DATAPAGES",
+            "name": "DATAPAGES",
+            "parameters": [
+                {
+                    "description": "Comma-separated list of fields to return",
+                    "name": "fieldList",
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the table or query to pull data from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "A unique field in the table such as a primary key",
+                    "name": "idField",
+                    "type": "string"
+                },
+                {
+                    "description": "Number of rows to return per page",
+                    "name": "rowsPerPage",
+                    "type": "number"
+                },
+                {
+                    "description": "The row of data this formula is in on the form",
+                    "name": "thisRow",
+                    "type": "number"
+                },
+                {
+                    "description": "Page number to pull from",
+                    "name": "currentPage",
+                    "type": "number"
+                },
+                {
+                    "description": "Optional criteria to filter the data",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers (TRUE/FALSE)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages (TRUE/FALSE)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Reference ranges that this query depends on",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Triggers rapid iteration until convergence",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#RAPIDITERATE",
+            "id": "RAPIDITERATE",
+            "name": "RAPIDITERATE",
+            "parameters": [
+                {
+                    "description": "Cell or range containing convergence check value",
+                    "dimensionality": "matrix",
+                    "name": "convergenceCheck",
+                    "type": "any"
+                },
+                {
+                    "description": "Maximum number of iterations (default: 10000)",
+                    "name": "maxIterations",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Convergence tolerance (default: 0.00000001)",
+                    "name": "tolerance",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Auto-start iteration (default: TRUE)",
+                    "name": "autoStart",
+                    "optional": true,
+                    "type": "boolean"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Shows diagnostic information about databases and tables",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#DIAGNOSTICS",
+            "id": "DIAGNOSTICS",
+            "name": "DIAGNOSTICS",
             "parameters": [
                 {
                     "description": "Optional workbook path (uses current workbook if empty)",

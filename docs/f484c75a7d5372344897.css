@@ -1,0 +1,943 @@
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-spinner {
+    text-align: center;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #0078d4;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+#external-import-section .ms-Dialog-body > p.ms-font-m {
+    color: #e4e0db !important; /* Match .ms-Dialog-title color */
+}
+
+/* Add vertical scrollbar to external import modal if content overflows */
+#external-import-section .ms-Dialog-content {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+#cancel-external-link {
+    margin-top: 20px; /* Adjust value as needed */
+}
+/* 
+ * Copyright (c) Microsoft Corp.ms-welcome__header h1,
+.ms-welcome__main h2,
+.ms-welcome__main p {
+    color: #f8f9fa !important;
+}on. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+/* Header pro download link */
+.thredr-header-pro-link {
+    color: #217346;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: 0;
+}
+
+/* Header title styling for the lighter background */
+.thredr-header-title {
+    color: #323130 !important; /* Dark grey text for light background */
+    font-size: 40px;  /* Smaller font */
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* High contrast text styles for better readability */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: #323130; /* Dark grey text for good readability */
+    background-color: #2d2d2d; /* Slate grey */
+}
+
+/* Override Fabric UI default text colors for better contrast */
+.ms-font-m,
+.ms-font-l,
+.ms-font-xl,
+.ms-font-s,
+.ms-font-su {
+    color: #f8f9fa !important; /* Off-white text for readability */
+}
+
+/* Specific overrides for welcome sections */
+.ms-welcome__header,
+.ms-welcome__main {
+    color: #f8f9fa;
+}
+
+.ms-welcome__header h1,
+.ms-welcome__main h2,
+.ms-welcome__main p {
+    color: #000000 !important;
+}
+
+/* Main content title specific styling */
+.ms-welcome__main h2 {
+    color: #f8f9fa !important; /* Off-white for main content title */
+}
+
+/* List item text contrast */
+.ms-welcome__features .ms-ListItem span {
+    color: #f8f9fa !important;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+ 
+.ms-welcome__header {
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+ }
+
+ .ms-welcome__main {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex: 1 0 0;
+    flex: 1 0 0;
+    padding: 10px 20px;
+ }
+ 
+ .ms-welcome__main > h2 {
+     width: 100%;
+     text-align: center;
+ }
+ 
+ .ms-welcome__features {
+     list-style-type: none;
+     margin-top: 10px;
+ }
+ 
+ .ms-welcome__features.ms-List .ms-ListItem {
+     padding-bottom: 20px;
+     display: -webkit-flex;
+     display: flex;
+ }
+ 
+ .ms-welcome__features.ms-List .ms-ListItem > .ms-Icon {
+     margin-right: 10px;
+ }
+ 
+ .ms-welcome__action.ms-Button--hero {
+     margin-top: 5px;
+ }
+
+/* Hero button text contrast improvements */
+.ms-Button.ms-Button--hero .ms-Button-label {
+  color: #f8f9fa !important; /* Off-white text for hero buttons */
+  font-weight: 600;
+}
+
+.ms-Button.ms-Button--hero:hover .ms-Button-label,
+.ms-Button.ms-Button--hero:focus .ms-Button-label{
+  color: #f8f9fa !important; /* Off-white text on hover/focus */
+  cursor: pointer;
+}
+
+b {
+    font-weight: bold;
+    color: #f8f9fa !important; /* Off-white text for bold elements */
+}
+
+/* Dialog text contrast improvements */
+.ms-Dialog-title {
+    color: #000000 !important; /* Black text for dialog title on white background */
+}
+
+.ms-Dialog-content p,
+.ms-Dialog-content li {
+    color: #000000 !important; /* Black text for dialog content on white background */
+}
+
+.ms-Dialog-content strong {
+    color: #000000 !important; /* Black text for emphasis in dialogs */
+}
+
+/* Override the font classes specifically for dialogs */
+.ms-Dialog .ms-font-xl,
+.ms-Dialog .ms-font-m,
+.ms-Dialog .ms-font-s {
+    color: #000000 !important; /* Black text for all font sizes in dialogs */
+}
+
+/* Button text contrast */
+.ms-Button-label {
+    color: #000000 !important; /* Dark text for default buttons */
+}
+
+.ms-Button--primary .ms-Button-label {
+    color: #ffffff !important; /* White text for primary buttons */
+}
+
+/* Hero buttons get white text */
+.ms-Button--hero .ms-Button-label {
+    color: #ffffff !important; /* White text for hero buttons */
+}
+
+/* Dialog button text should all be dark (override primary button white text) */
+.ms-Dialog .ms-Button-label,
+.ms-Dialog .ms-Button--primary .ms-Button-label {
+    color: #000000 !important; /* Dark text for all dialog buttons */
+}
+
+/* Message bar text improvements */
+.ms-MessageBar-text {
+    color: #2d2d2d !important; /* Dark text for message bars */
+}
+
+.ms-MessageBar--info .ms-MessageBar-text {
+    color: #004578 !important; /* Blue text for info messages */
+}
+
+.ms-MessageBar--success .ms-MessageBar-text {
+    color: #0e5814 !important; /* Green text for success messages */
+}
+
+.ms-MessageBar--error .ms-MessageBar-text {
+    color: #8b1538 !important; /* Red text for error messages */
+}
+
+/* Export section styling */
+.thredr-export-section {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.thredr-export-section h3 {
+    color: #f8f9fa !important;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.thredr-export-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.thredr-export-buttons .ms-Button {
+    width: 200px;
+    margin: 2 !important;
+    gap: 0 !important;
+    padding-top: 2 !important;
+    padding-bottom: 2 !important;
+}
+.thredr-export-buttons br {
+    line-height: 0 !important;
+}
+.thredr-export-buttons .ms-Button:hover {
+    cursor: pointer;
+}
+/* legal section styling */
+.thredr-legal-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.thredr-legal-section h3 {
+    color: #f8f9fa !important;
+    margin-bottom: 15px;
+}
+
+.thredr-legal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Database viewer styling */
+.thredr-database-viewer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    border: 1px solid #3e3e42;
+}
+
+.database-viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.database-viewer-header h3 {
+    margin: 0;
+    color: #f8f9fa !important;
+}
+
+.database-viewer-header-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.database-viewer-header .ms-Button {
+    padding: 4px 12px;
+}
+
+.database-info {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #2d2d2d;
+    border-radius: 4px;
+}
+
+.database-info p {
+    margin: 5px 0;
+    color: #f8f9fa !important;
+}
+
+.database-info strong {
+    color: #4da3ff !important;
+}
+
+.database-info span {
+    color: #e6e6e6 !important;
+}
+
+.database-dropdown {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 8px;
+    background-color: #2d2d2d;
+    border: 1px solid #3e3e42;
+    border-radius: 4px;
+    color: #f8f9fa;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.database-dropdown:hover {
+    border-color: #4da3ff;
+}
+
+.database-dropdown:focus {
+    outline: none;
+    border-color: #4da3ff;
+    box-shadow: 0 0 0 1px #4da3ff;
+}
+
+.database-dropdown option {
+    background-color: #2d2d2d;
+    color: #f8f9fa;
+}
+
+.database-tables-section {
+    margin-top: 15px;
+}
+
+.database-tables-section h4 {
+    color: #f8f9fa !important;
+    margin-bottom: 10px;
+}
+
+.database-views-section {
+    margin-top: 15px;
+}
+
+.database-views-section h4 {
+    color: #f8f9fa !important;
+    margin-bottom: 10px;
+}
+
+.tables-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.database-table-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.database-table-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #2d2d2d;
+    border-radius: 4px;
+    border: 1px solid #3e3e42;
+    transition: background-color 0.2s;
+}
+
+.database-table-item:hover {
+    background-color: #3e3e42;
+}
+
+.database-table-item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.database-table-item-name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.database-table-item span {
+    color: #f8f9fa !important;
+}
+
+.database-table-item .ms-Icon {
+    color: #4da3ff;
+}
+
+.database-table-delete-btn,
+.database-view-delete-btn {
+    background: transparent;
+    border: 1px solid #d13438;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: #d13438;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.database-table-delete-btn:hover,
+.database-view-delete-btn:hover {
+    background-color: #d13438;
+    color: #ffffff;
+}
+
+.database-table-delete-btn .ms-Icon,
+.database-view-delete-btn .ms-Icon {
+    color: inherit;
+    font-size: 14px;
+}
+
+.database-viewer-actions {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #3e3e42;
+}
+
+.database-viewer-actions button {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.thredr-legal-buttons .ms-Button {
+    width: 200px;
+    margin: 5px 0;
+}
+
+.thredr-legal-buttons .ms-Button:hover {
+    cursor: pointer;
+}
+
+/* About button cursor styling */
+#show-about:hover {
+    cursor: pointer;
+}
+
+/* Export Dialog Styles */
+.export-selection-section {
+    margin-bottom: 20px;
+}
+
+.export-selection-section .ms-Label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff !important; /* White text for visibility on dark background */
+    font-weight: 600;
+}
+
+.export-selection-section .ms-Dropdown {
+    width: 100%;
+    min-height: 32px;
+    border: 1px solid #a3a3a3;
+    border-radius: 2px;
+    background-color: #ffffff;
+    color: #323130;
+    font-size: 14px;
+    padding: 6px 12px;
+}
+
+/* Export Format Radio Buttons */
+.export-format-section {
+    margin-bottom: 20px;
+}
+
+.export-format-section .ms-Label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.export-format-options {
+    display: flex;
+    gap: 20px;
+}
+
+.export-format-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.export-format-option input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #0078d4;
+}
+
+.export-format-option span {
+    color: #ffffff !important;
+}
+
+.export-path-section {
+    margin-bottom: 20px;
+}
+
+.export-path-section .ms-Label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff !important; /* White text for visibility on dark background */
+    font-weight: 600;
+}
+
+.export-path-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.export-path-controls .ms-TextField {
+    flex: 1;
+    min-height: 32px;
+    border: 1px solid #a3a3a3;
+    border-radius: 2px;
+    background-color: #f3f2f1;
+    color: #323130;
+    font-size: 14px;
+    padding: 6px 12px;
+}
+
+.export-path-controls .ms-Button {
+    min-width: 80px;
+}
+
+.export-path-controls .ms-Button:hover {
+    cursor: pointer;
+}
+
+/* Export dialog text styling for dark background */
+#export-dialog .ms-Dialog-content p {
+    color: #ffffff !important; /* White text for dialog content */
+}
+
+#export-dialog .ms-Dialog-title {
+    color: #ffffff !important; /* White text for dialog title */
+}
+
+.export-path-controls .ms-Button:hover {
+    cursor: pointer;
+}
+
+/* Export dialog button styling */
+#export-ok:hover,
+#export-cancel:hover,
+#export-browse-button:hover {
+    cursor: pointer;
+}
+
+/* THREDr Dialog and Status Styles */
+.thredr-dialog-hidden {
+    display: none !important;
+}
+
+/* Status Messages Overlay */
+.thredr-status-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000; /* Higher than loading overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: all;
+}
+
+.thredr-status-container {
+    max-width: 90%;
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.thredr-status-overlay .ms-MessageBar {
+    margin-bottom: 0;
+    border-radius: 4px;
+}
+
+.thredr-status-messages {
+    margin-top: 15px;
+}
+
+.thredr-status-hidden {
+    display: none !important;
+}
+
+.thredr-test-button {
+    margin-top: 10px;
+}
+
+/* Dialog overlay and positioning */
+.ms-Dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background - less transparent */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    backdrop-filter: blur(8px); /* Standard property for modern browsers */
+    /* Fallback for browsers that do not support backdrop-filter (e.g., IE) */
+    /* No blur effect, just semi-transparent background */
+    /* For IE and unsupported browsers, only the rgba background will apply */
+    z-index: 2000; /* Higher than iframe container (1000) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ms-Dialog-main {
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.ms-Dialog-header {
+    padding: 20px 24px 0;
+}
+
+.ms-Dialog-title {
+    margin: 0;
+    font-weight: 600;
+}
+
+.ms-Dialog-inner {
+    padding: 0 24px 24px;
+}
+
+.ms-Dialog-content {
+    margin: 16px 0 24px;
+}
+
+.ms-Dialog-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ms-Dialog-actions .ms-Button {
+    flex: 1;
+    min-width: 80px;
+}
+
+/* Message Bar Styles */
+.ms-MessageBar {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-left: 4px solid;
+    border-radius: 2px;
+}
+
+.ms-MessageBar--info {
+    background-color: #deecf9;
+    border-left-color: #0078d4;
+    color: #323130;
+}
+
+.ms-MessageBar--success {
+    background-color: #dff6dd;
+    border-left-color: #107c10;
+    color: #323130;
+}
+
+.ms-MessageBar--error {
+    background-color: #fde7e9;
+    border-left-color: #d13438;
+    color: #323130;
+}
+
+.ms-MessageBar-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.ms-MessageBar-icon {
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+.ms-MessageBar-text {
+    flex: 1;
+    line-height: 1.4;
+}
+
+/* Instruction paragraph specific styling */
+.ms-welcome__main p {
+    color: #f8f9fa !important; /* Off-white for instruction text */
+}
+
+.ms-welcome__main p b {
+    color: #f8f9fa !important; /* Same off-white for bold text within paragraphs */
+}
+
+/* Make text-based buttons look like hyperlinks */
+.ms-welcome__action .ms-Button-label,
+.ms-welcome__action.ms-Button--hero .ms-Button-label,
+.ms-welcome__action.ms-Button--primary .ms-Button-label {
+    color: #0078d4 !important; /* Blue hyperlink color */
+    text-decoration: underline !important;
+    font-weight: normal !important;
+}
+
+.ms-welcome__action:hover .ms-Button-label,
+.ms-welcome__action.ms-Button--hero:hover .ms-Button-label,
+.ms-welcome__action.ms-Button--primary:hover .ms-Button-label {
+    color: #106ebe !important; /* Darker blue on hover */
+    text-decoration: underline !important;
+}
+
+.ms-welcome__action:focus .ms-Button-label,
+.ms-welcome__action.ms-Button--hero:focus .ms-Button-label,
+.ms-welcome__action.ms-Button--primary:focus .ms-Button-label {
+    color: #005a9e !important; /* Even darker blue on focus */
+    text-decoration: underline !important;
+}
+
+.sign-out-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Fullscreen content class */
+.fullscreen-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-color: white;
+  z-index: 1000;
+}
+
+/* Copilot Assistant Dialog Styles */
+.copilot-question-input {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid #8a8886;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: #ffffff;
+  color: #323130;
+  box-sizing: border-box;
+}
+
+.copilot-question-input:focus {
+  outline: none;
+  border-color: #0078d4;
+  box-shadow: 0 0 4px rgba(0, 120, 212, 0.3);
+}
+
+.copilot-question-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Styled Buttons (like database viewer buttons) */
+.thredr-styled-button {
+    width: 200px;
+    padding: 10px 16px;
+    border: 1px solid #3e3e42;
+    border-radius: 4px;
+    background-color: #3e3e42;
+    color: #f8f9fa !important;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thredr-styled-button:hover {
+    background-color: #505054;
+    border-color: #505054;
+}
+
+.thredr-styled-button:active {
+    background-color: #2d2d2d;
+}
+
+.thredr-styled-button .ms-Button-label {
+    color: #f8f9fa !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+}
+
+.thredr-styled-button:hover .ms-Button-label {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* Primary styled button (accent color) */
+.thredr-styled-button--primary {
+    background-color: #0078d4;
+    border-color: #0078d4;
+}
+
+.thredr-styled-button--primary:hover {
+    background-color: #106ebe;
+    border-color: #106ebe;
+}
+
+.thredr-styled-button--primary:active {
+    background-color: #005a9e;
+}
+
+.thredr-styled-button--primary .ms-Button-label {
+    color: #ffffff !important;
+}
+
+/* Large styled button variant */
+.thredr-styled-button--large {
+    width: 240px;
+    padding: 14px 24px;
+    font-size: 18px;
+}
+
+.thredr-styled-button--large .ms-Button-label {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+/* Legal section links styling */
+.thredr-legal-links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.thredr-link {
+    color: #6db3f2 !important;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.thredr-link:hover {
+    color: #9ecbf6 !important;
+    text-decoration: underline;
+}
+
+.thredr-link-separator {
+    color: #666;
+    margin: 0 8px;
+}
+
+/* Utility classes to replace inline styles */
+#loading-overlay {
+    display: none;
+}
+
+.thredr-text-muted {
+    color: #999;
+}
+
+.thredr-hint-text {
+    color: #999;
+    margin-top: 10px;
+}
+
+.thredr-text-danger {
+    color: #d13438;
+}
+
+.thredr-btn-danger {
+    background-color: #d13438;
+    color: white;
+}

@@ -114,19 +114,49 @@
         <button class="demo-button" id="run-heat-mass-balance">Run Heat & Mass Balance Demo</button>
     </div>
 
-    <div class="demo-container" style="opacity: 0.6;">
-        <div class="demo-title">🏗️ Beam Deflection Calculator (Coming Soon)</div>
+    <div class="demo-container">
+        <div class="demo-title">🏗️ Beam Deflection Calculator</div>
         <div class="demo-description">
-            Calculate optimal beam size for a given span with point loads, ensuring deflection stays within acceptable limits using iterative analysis.
+            Calculate the deflection of a simply-supported beam under multiple point loads, and find the minimum beam size (steel and aluminum) that keeps deflection within limits. Uses SQL cross-joins and superposition to evaluate every beam/position combination.
         </div>
         <ul class="demo-steps">
-            <li>Input span length and load positions</li>
-            <li>Define maximum allowable deflection</li>
-            <li>Iteratively calculates beam properties</li>
-            <li>Determines minimum required beam size</li>
-            <li>Generates deflection diagram and stress analysis</li>
+            <li>Creates BeamLoads table with 20 point loads at positions along a 50m span</li>
+            <li>Provides Steel and Aluminum beam catalogs with geometric I-value progression</li>
+            <li>SQL dynamically selects the smallest beam where max deflection ≤ allowable limit</li>
+            <li>Computes per-position deflection for the selected beam using QUERY formulas</li>
+            <li>Generates deflection profile chart comparing Steel vs Aluminum</li>
         </ul>
-        <button class="demo-button" disabled>Coming Soon</button>
+        <button class="demo-button" id="run-beam-calculator">Run Beam Calculator Demo</button>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">⚡ Cable Sizing Calculator</div>
+        <div class="demo-description">
+            Calculate voltage drop for electrical circuits at various distances and load currents, and find the minimum cable size (copper and aluminum) that keeps voltage drop within the specified limit.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates CircuitLoads table with 15 building circuits (Lighting, HVAC, Elevator, etc.)</li>
+            <li>Provides Copper and Aluminum cable catalogs with IEC resistance and ampacity data</li>
+            <li>SQL cross-joins circuits with cables to find the smallest cable meeting all constraints</li>
+            <li>Computes per-circuit voltage drop % for the selected cable using QUERY formulas</li>
+            <li>Generates clustered column chart showing voltage drop by circuit</li>
+        </ul>
+        <button class="demo-button" id="run-cable-sizing">Run Cable Sizing Demo</button>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">🔥 Heat Exchanger Sizing</div>
+        <div class="demo-description">
+            Iterative solver using THREDrDB passthrough to solve a genuine circular dependency: outlet temperatures depend on Q_actual, which depends on the selected exchanger's U×A×LMTD, but LMTD depends on the outlet temperatures. Uses RAPIDITERATE for fast convergence.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates iterative HX_Calc table with Q_actual, temperatures, and LMTD formulas</li>
+            <li>VOLATILELOOKUP reads previous iteration values from DB to break circular reference</li>
+            <li>SQL selects optimal Shell & Tube and Plate exchangers from catalogs</li>
+            <li>RAPIDITERATE drives convergence loop (max 100 iterations, tolerance 0.1)</li>
+            <li>Shows stream conditions, energy balance checks, and temperature profile chart</li>
+        </ul>
+        <button class="demo-button" id="run-heat-exchanger">Run Heat Exchanger Demo</button>
     </div>
 
     <script>
@@ -142,6 +172,27 @@
         document.getElementById('run-heat-mass-balance').addEventListener('click', function() {
             if (window.parent && window.parent !== window) {
                 window.parent.postMessage({ type: 'RUN_DEMO', demo: 'heat-mass-balance' }, '*');
+            }
+        });
+
+        // Beam Calculator demo button
+        document.getElementById('run-beam-calculator').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'beam-calculator' }, '*');
+            }
+        });
+
+        // Cable Sizing demo button
+        document.getElementById('run-cable-sizing').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'cable-sizing' }, '*');
+            }
+        });
+
+        // Heat Exchanger demo button
+        document.getElementById('run-heat-exchanger').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'heat-exchanger' }, '*');
             }
         });
     </script>
