@@ -124,6 +124,19 @@
         </div>
     </div>
 
+    <div class="category-container" id="performance-category">
+        <div class="category-icon">🚀</div>
+        <div class="category-title">
+            Performance & Efficiency
+        </div>
+        <div class="category-description">
+            See how THREDrDB simplifies and accelerates common Excel tasks. Replace dozens of lookup formulas with a single SQL query.
+        </div>
+        <div class="category-examples">
+            Examples: VLOOKUP vs QUERY Showdown
+        </div>
+    </div>
+
     <script>
         // Navigation handlers
         document.getElementById('relational-category').addEventListener('click', function() {
@@ -144,6 +157,14 @@
             if (!this.classList.contains('coming-soon')) {
                 if (window.parent && window.parent !== window) {
                     window.parent.postMessage({ type: 'NAVIGATE', page: 'demos-engineering' }, '*');
+                }
+            }
+        });
+        
+        document.getElementById('performance-category').addEventListener('click', function() {
+            if (!this.classList.contains('coming-soon')) {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ type: 'NAVIGATE', page: 'demos-performance' }, '*');
                 }
             }
         });
