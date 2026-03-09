@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THREDr API Function Demos</title>
+    <title>THREDr CPA Tools Demos</title>
     <style>
         body {
             font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
@@ -69,6 +69,10 @@
         .demo-button:active {
             background-color: #005a9e;
         }
+        .demo-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
         .demo-steps {
             list-style-type: none;
             padding-left: 0;
@@ -88,46 +92,53 @@
             color: #0078d4;
             font-weight: bold;
         }
-        .demo-container.coming-soon {
+        .coming-soon {
             opacity: 0.6;
+        }
+        .coming-soon .demo-button {
+            background-color: #cccccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
     <a href="#" class="back-link" id="back-link">← Back to All Demos</a>
     
-    <h1>🌐 API Function Demos</h1>
+    <h1>💼 CPA Tools</h1>
     
     <div class="intro">
-        <p>These demos showcase how to integrate external APIs with THREDrDB, create live data feeds using the CLOCK function, and visualize real-time data.</p>
+        <p>These demos showcase tax planning and financial analysis calculations using THREDrDB's iterative logic capabilities. Real-world scenarios that CPAs and tax professionals encounter daily.</p>
     </div>
 
     <div class="demo-container">
-        <div class="demo-title">📈 Live Stock Price Tracker</div>
+        <div class="demo-title">💰 S-Corp Reasonable Salary Optimizer</div>
         <div class="demo-description">
-            Create a live stock price tracker that automatically updates using API calls and the CLOCK function to trigger periodic refreshes. Uses Alpha Vantage API to fetch real-time IBM stock data.
+            The IRS requires S-corp owners to take reasonable W-2 wages, but payroll taxes are deductible. This demo finds the optimal salary that minimizes total individual and S-corp tax burden by iterating through the circular dependency where wages affect payroll taxes, which affects the deduction, which affects taxable S-corp income.
         </div>
         <ul class="demo-steps">
-            <li>Fetches real-time stock prices from Alpha Vantage API (5-minute intervals)</li>
-            <li>Uses CLOCK function to create automatic refresh every 10 seconds</li>
-            <li>Stores price history in THREDrDB for analysis</li>
-            <li>Creates a live line chart showing price changes over time</li>
-            <li>Continues updating as long as the workbook is open</li>
+            <li>Inputs: S-corp net operating income, state/federal tax rates, FICA rates, and ownership percentage</li>
+            <li>Iterative calculation finds equilibrium salary balancing deduction benefit vs payroll tax cost</li>
+            <li>Calculates: W-2 wages, FICA taxes, S-corp taxable income, federal/state tax liability by scenario</li>
+            <li>Shows total tax comparison across salary range (15% to 50% of net income)</li>
+            <li>Identifies optimal salary point with convergence history chart</li>
+            <li>RETRIGGER function automates the iteration until total tax stabilizes</li>
         </ul>
-        <button class="demo-button" id="run-stock-tracker">Run Live Stock Tracker Demo</button>
+        <button class="demo-button" id="run-s-corp-salary">Run S-Corp Salary Optimizer</button>
     </div>
 
     <div class="demo-container coming-soon">
-        <div class="demo-title">🌤️ Live Weather Tracker (Coming Soon)</div>
+        <div class="demo-title">⚖️ Alternative Minimum Tax (AMT) Calculator</div>
         <div class="demo-description">
-            Monitor live weather conditions using the OpenWeather API with automatic periodic updates and historical tracking.
+            Calculate regular tax vs. AMT and find which system applies. This demo iterates through the circular dependency where certain deductions affect taxable income differently under regular tax vs. AMT, and AMT credits phase in based on which system applies. Watch the calculation stabilize as it finds the correct tax liability.
         </div>
         <ul class="demo-steps">
-            <li>Calls OpenWeather API for current conditions</li>
-            <li>Uses CLOCK function for continuous monitoring</li>
-            <li>Tracks temperature, humidity, and conditions over time</li>
-            <li>Generates live weather charts and trends</li>
-            <li>Compares multiple locations simultaneously</li>
+            <li>Inputs: Adjusted Gross Income (AGI), preferential tax items, depreciation adjustments</li>
+            <li>Calculates both regular income tax and Alternative Minimum Taxable Income (AMTI)</li>
+            <li>Applies AMT exemptions that phase out based on AMTI level</li>
+            <li>Computes tentative minimum tax and compares to regular tax</li>
+            <li>Pays the higher of regular tax or AMT, with foreign tax credit application</li>
+            <li>RETRIGGER iteration stabilizes the calculation when phase-out thresholds impact results</li>
+            <li>Shows convergence history and tax comparison charts</li>
         </ul>
         <button class="demo-button" disabled>Coming Soon</button>
     </div>
@@ -141,10 +152,10 @@
             }
         });
         
-        // Stock tracker demo button
-        document.getElementById('run-stock-tracker').addEventListener('click', function() {
+        // S-Corp Salary Optimizer demo button
+        document.getElementById('run-s-corp-salary').addEventListener('click', function() {
             if (window.parent && window.parent !== window) {
-                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'stock-tracker' }, '*');
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 's-corp-salary' }, '*');
             }
         });
     </script>

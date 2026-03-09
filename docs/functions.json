@@ -897,6 +897,236 @@
             }
         },
         {
+            "description": "Append a record to an Excel table/ListObject or in-memory database table with column/value pairs",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#APPEND",
+            "id": "APPEND",
+            "name": "APPEND",
+            "parameters": [
+                {
+                    "description": "Name of the Excel table to append a record to",
+                    "name": "table",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute the append, FALSE to skip (default: FALSE). Use this to prevent appending while updating values.",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "If TRUE, the appended record will only be written to the table in memory and will not be written to the Excel table (default: FALSE)",
+                    "name": "memoryOnly",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty), this is only necessary if memoryOnly is true.",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the first column to update",
+                    "name": "column",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value for the first column",
+                    "name": "value",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Column name and value pairs: column1, value1, column2, value2, ...",
+                    "name": "pairs",
+                    "optional": true,
+                    "repeating": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Update records in an Excel table/ListObject or in-memory database table.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#UPDATE",
+            "id": "UPDATE",
+            "name": "UPDATE",
+            "parameters": [
+                {
+                    "description": "Name of the table to update",
+                    "name": "table",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute update, FALSE to skip (default: FALSE)",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "If TRUE, updates only in-memory database table and not Excel table (default: FALSE)",
+                    "name": "memoryOnly",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty), only necessary if memoryOnly is true",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the column used for WHERE matching",
+                    "name": "criteriaColumn",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value to match in the criteria column",
+                    "name": "criteriaValue",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Name of first column to update",
+                    "name": "column",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value for the first update column",
+                    "name": "value",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Additional column/value pairs: column2, value2, column3, value3, ...",
+                    "name": "pairs",
+                    "optional": true,
+                    "repeating": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Delete records from an Excel table/ListObject or in-memory database table.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#DELETE",
+            "id": "DELETE",
+            "name": "DELETE",
+            "parameters": [
+                {
+                    "description": "Name of the table to delete from",
+                    "name": "table",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute delete, FALSE to skip (default: FALSE)",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "If TRUE, deletes only from in-memory database table and not Excel table (default: FALSE)",
+                    "name": "memoryOnly",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty), only necessary if memoryOnly is true",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the column used for WHERE matching. If not provided or empty, ALL rows will be deleted.",
+                    "name": "criteriaColumn",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value to match in the criteria column (ignored if criteriaColumn is empty)",
+                    "name": "criteriaValue",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Execute non-query SQL statements (INSERT, UPDATE, DELETE) against in-memory SQLite database.\nOptionally refreshes an Excel table with the results of selecting from the modified table.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#NONQUERY",
+            "id": "NONQUERY",
+            "name": "NONQUERY",
+            "parameters": [
+                {
+                    "description": "SQL statement to execute (INSERT, UPDATE, DELETE)",
+                    "name": "query",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute the query, FALSE shows last execution timestamp",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional table name - if provided, after executing query, all rows from this table are pushed to corresponding Excel table",
+                    "name": "refreshTable",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
             "description": "Returns the current build version timestamp.",
             "helpUrl": "https://app.thredr.net/custom-functions.html#BUILDVERSION",
             "id": "BUILDVERSION",

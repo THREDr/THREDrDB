@@ -124,6 +124,19 @@
         </div>
     </div>
 
+    <div class="category-container" id="cpa-category">
+        <div class="category-icon">💼</div>
+        <div class="category-title">
+            CPA Tools
+        </div>
+        <div class="category-description">
+            Tax and financial planning calculations using circular iteration logic. Examples from real tax preparation and business advisory scenarios.
+        </div>
+        <div class="category-examples">
+            Examples: S-Corp Reasonable Salary Optimizer, Working Trial Balance
+        </div>
+    </div>
+
     <div class="category-container" id="performance-category">
         <div class="category-icon">🚀</div>
         <div class="category-title">
@@ -161,17 +174,19 @@
             }
         });
         
+        document.getElementById('cpa-category').addEventListener('click', function() {
+            if (!this.classList.contains('coming-soon')) {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ type: 'NAVIGATE', page: 'demos-cpa' }, '*');
+                }
+            }
+        });
+        
         document.getElementById('performance-category').addEventListener('click', function() {
             if (!this.classList.contains('coming-soon')) {
                 if (window.parent && window.parent !== window) {
                     window.parent.postMessage({ type: 'NAVIGATE', page: 'demos-performance' }, '*');
                 }
-            }
-        });
-        
-        document.getElementById('run-ecommerce-demo').addEventListener('click', function() {
-            if (window.parent && window.parent !== window) {
-                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'ecommerce' }, '*');
             }
         });
     </script>
