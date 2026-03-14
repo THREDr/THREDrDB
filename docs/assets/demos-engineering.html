@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THREDr Engineering Demos</title>
+    <style>
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #323130;
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        .back-link {
+            color: #0078d4;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .intro {
+            background-color: #f3f2f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .demo-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #edebe9;
+            border-radius: 4px;
+            background-color: #faf9f8;
+        }
+        .demo-title {
+            color: #106ebe;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .demo-description {
+            margin-bottom: 15px;
+            color: #605e5c;
+        }
+        .demo-button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-family: "Segoe UI", sans-serif;
+            transition: background-color 0.2s;
+        }
+        .demo-button:hover {
+            background-color: #106ebe;
+        }
+        .demo-button:active {
+            background-color: #005a9e;
+        }
+        .demo-steps {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        .demo-steps li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+            color: #605e5c;
+        }
+        .demo-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0078d4;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="back-link" id="back-link">← Back to All Demos</a>
+    
+    <h1>⚙️ Engineering Demos</h1>
+    
+    <div class="intro">
+        <p>These demos showcase advanced engineering calculations using THREDrDB's iterative and circular logic capabilities. Perfect for process engineering, structural analysis, and complex simulations.</p>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">🔥 Heat & Mass Balance Simulation</div>
+        <div class="demo-description">
+            Process engineering simulation using THREDrDB.RETRIGGER to solve circular dependencies in stream flow calculations. Watch the system automatically converge to a balanced state!
+        </div>
+        <ul class="demo-steps">
+            <li>Creates 3 interdependent process streams with mass, heat, and composition calculations</li>
+            <li>Uses RETRIGGER function for automatic iterative solving (no manual F9!)</li>
+            <li>Implements damping factor for stable convergence (90% new value, 10% old)</li>
+            <li>Shows real-time balance checks for mass and energy conservation</li>
+            <li>Displays convergence chart tracking error magnitude over iterations</li>
+        </ul>
+        <button class="demo-button" id="run-heat-mass-balance">Run Heat & Mass Balance Demo</button>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">🏗️ Beam Deflection Calculator</div>
+        <div class="demo-description">
+            Calculate the deflection of a simply-supported beam under multiple point loads, and find the minimum beam size (steel and aluminum) that keeps deflection within limits. Uses SQL cross-joins and superposition to evaluate every beam/position combination.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates BeamLoads table with 20 point loads at positions along a 50m span</li>
+            <li>Provides Steel and Aluminum beam catalogs with geometric I-value progression</li>
+            <li>SQL dynamically selects the smallest beam where max deflection ≤ allowable limit</li>
+            <li>Computes per-position deflection for the selected beam using QUERY formulas</li>
+            <li>Generates deflection profile chart comparing Steel vs Aluminum</li>
+        </ul>
+        <button class="demo-button" id="run-beam-calculator">Run Beam Calculator Demo</button>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">⚡ Cable Sizing Calculator</div>
+        <div class="demo-description">
+            Calculate voltage drop for electrical circuits at various distances and load currents, and find the minimum cable size (copper and aluminum) that keeps voltage drop within the specified limit.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates CircuitLoads table with 15 building circuits (Lighting, HVAC, Elevator, etc.)</li>
+            <li>Provides Copper and Aluminum cable catalogs with IEC resistance and ampacity data</li>
+            <li>SQL cross-joins circuits with cables to find the smallest cable meeting all constraints</li>
+            <li>Computes per-circuit voltage drop % for the selected cable using QUERY formulas</li>
+            <li>Generates clustered column chart showing voltage drop by circuit</li>
+        </ul>
+        <button class="demo-button" id="run-cable-sizing">Run Cable Sizing Demo</button>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">🔥 Heat Exchanger Sizing</div>
+        <div class="demo-description">
+            Iterative solver using THREDrDB passthrough to solve a genuine circular dependency: outlet temperatures depend on Q_actual, which depends on the selected exchanger's U×A×LMTD, but LMTD depends on the outlet temperatures. Uses RAPIDITERATE for fast convergence.
+        </div>
+        <ul class="demo-steps">
+            <li>Creates iterative HX_Calc table with Q_actual, temperatures, and LMTD formulas</li>
+            <li>VOLATILELOOKUP reads previous iteration values from DB to break circular reference</li>
+            <li>SQL selects optimal Shell & Tube and Plate exchangers from catalogs</li>
+            <li>RAPIDITERATE drives convergence loop (max 100 iterations, tolerance 0.1)</li>
+            <li>Shows stream conditions, energy balance checks, and temperature profile chart</li>
+        </ul>
+        <button class="demo-button" id="run-heat-exchanger">Run Heat Exchanger Demo</button>
+    </div>
+
+    <script>
+        // Back button
+        document.getElementById('back-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'NAVIGATE', page: 'demos' }, '*');
+            }
+        });
+        
+        // Heat & Mass Balance demo button
+        document.getElementById('run-heat-mass-balance').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'heat-mass-balance' }, '*');
+            }
+        });
+
+        // Beam Calculator demo button
+        document.getElementById('run-beam-calculator').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'beam-calculator' }, '*');
+            }
+        });
+
+        // Cable Sizing demo button
+        document.getElementById('run-cable-sizing').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'cable-sizing' }, '*');
+            }
+        });
+
+        // Heat Exchanger demo button
+        document.getElementById('run-heat-exchanger').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'heat-exchanger' }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

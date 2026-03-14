@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THREDr CPA Tools Demos</title>
+    <style>
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #323130;
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        .back-link {
+            color: #0078d4;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .intro {
+            background-color: #f3f2f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .demo-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #edebe9;
+            border-radius: 4px;
+            background-color: #faf9f8;
+        }
+        .demo-title {
+            color: #106ebe;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .demo-description {
+            margin-bottom: 15px;
+            color: #605e5c;
+        }
+        .demo-button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-family: "Segoe UI", sans-serif;
+            transition: background-color 0.2s;
+        }
+        .demo-button:hover {
+            background-color: #106ebe;
+        }
+        .demo-button:active {
+            background-color: #005a9e;
+        }
+        .demo-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .demo-steps {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        .demo-steps li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+            color: #605e5c;
+        }
+        .demo-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0078d4;
+            font-weight: bold;
+        }
+        .coming-soon {
+            opacity: 0.6;
+        }
+        .coming-soon .demo-button {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="back-link" id="back-link">← Back to All Demos</a>
+    
+    <h1>💼 CPA Tools</h1>
+    
+    <div class="intro">
+        <p>These demos showcase tax planning and financial analysis calculations using THREDrDB's iterative logic capabilities. Real-world scenarios that CPAs and tax professionals encounter daily.</p>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">💰 S-Corp Reasonable Salary Optimizer</div>
+        <div class="demo-description">
+            The IRS requires S-corp owners to take reasonable W-2 wages, but payroll taxes are deductible. This demo finds the optimal salary that minimizes total individual and S-corp tax burden by iterating through the circular dependency where wages affect payroll taxes, which affects the deduction, which affects taxable S-corp income.
+        </div>
+        <ul class="demo-steps">
+            <li>Inputs: S-corp net operating income, state/federal tax rates, FICA rates, and ownership percentage</li>
+            <li>Iterative calculation finds equilibrium salary balancing deduction benefit vs payroll tax cost</li>
+            <li>Calculates: W-2 wages, FICA taxes, S-corp taxable income, federal/state tax liability by scenario</li>
+            <li>Shows total tax comparison across salary range (15% to 50% of net income)</li>
+            <li>Identifies optimal salary point with convergence history chart</li>
+            <li>RETRIGGER function automates the iteration until total tax stabilizes</li>
+        </ul>
+        <button class="demo-button" id="run-s-corp-salary">Run S-Corp Salary Optimizer</button>
+    </div>
+
+    <div class="demo-container coming-soon">
+        <div class="demo-title">⚖️ Alternative Minimum Tax (AMT) Calculator</div>
+        <div class="demo-description">
+            Calculate regular tax vs. AMT and find which system applies. This demo iterates through the circular dependency where certain deductions affect taxable income differently under regular tax vs. AMT, and AMT credits phase in based on which system applies. Watch the calculation stabilize as it finds the correct tax liability.
+        </div>
+        <ul class="demo-steps">
+            <li>Inputs: Adjusted Gross Income (AGI), preferential tax items, depreciation adjustments</li>
+            <li>Calculates both regular income tax and Alternative Minimum Taxable Income (AMTI)</li>
+            <li>Applies AMT exemptions that phase out based on AMTI level</li>
+            <li>Computes tentative minimum tax and compares to regular tax</li>
+            <li>Pays the higher of regular tax or AMT, with foreign tax credit application</li>
+            <li>RETRIGGER iteration stabilizes the calculation when phase-out thresholds impact results</li>
+            <li>Shows convergence history and tax comparison charts</li>
+        </ul>
+        <button class="demo-button" disabled>Coming Soon</button>
+    </div>
+
+    <script>
+        // Back button
+        document.getElementById('back-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'NAVIGATE', page: 'demos' }, '*');
+            }
+        });
+        
+        // S-Corp Salary Optimizer demo button
+        document.getElementById('run-s-corp-salary').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 's-corp-salary' }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

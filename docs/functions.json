@@ -1,0 +1,1140 @@
+{
+    "allowCustomDataForDataTypeAny": true,
+    "functions": [
+        {
+            "description": "Export SQLite query result to CSV or XLSX file",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#EXPORTQUERY",
+            "id": "EXPORTQUERY",
+            "name": "EXPORTQUERY",
+            "parameters": [
+                {
+                    "description": "SQLite query to execute",
+                    "name": "query",
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers in the result (true/false)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Export type: \"csv\" or \"xls\"",
+                    "name": "exportType",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional name of the exported file (default: \"ExportedQuery\")",
+                    "name": "fileName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional table or view name to export (used instead of query if query is empty)",
+                    "name": "tableOrViewName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional delimiter character for CSV (comma by default)",
+                    "name": "delimiter",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Refresh THREDr Table - Loads data from Excel range into the database",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#REFRESHTABLE",
+            "id": "REFRESHTABLE",
+            "name": "REFRESHTABLE",
+            "parameters": [
+                {
+                    "description": "The Excel range data to load (2D array)",
+                    "dimensionality": "matrix",
+                    "name": "tableData",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Name to give the table in the database, or to look up if tableData is not provided",
+                    "name": "tableName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Whether the first row contains headers (true/false)",
+                    "name": "skipHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Cache timeout in seconds (default: 60)",
+                    "name": "cacheTimeoutSeconds",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Run SQLite query on THREDr database",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#QUERY",
+            "id": "QUERY",
+            "name": "QUERY",
+            "parameters": [
+                {
+                    "description": "SQLite query to execute",
+                    "name": "query",
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers in the result (true/false)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional name to save this query as a view",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the query definition name instead of data (true/false)",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Return row count instead of data (true/false)",
+                    "name": "returnRows",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "If provided, push the result to a table in the workbook with this name",
+                    "name": "toTable",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Run SQLite query on THREDr database (Volatile version - recalculates frequently - results are not cached)",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#VOLATILEQUERY",
+            "id": "VOLATILEQUERY",
+            "name": "VOLATILEQUERY",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [
+                {
+                    "description": "SQLite query to execute",
+                    "name": "query",
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers in the result (true/false)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional name to save this query as a view",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the query definition name instead of data (true/false)",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Return row count instead of data (true/false)",
+                    "name": "returnRows",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Whether to cache the result (default: false)",
+                    "name": "cacheResult",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Displays the current time on a regular interval.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#CLOCK",
+            "id": "CLOCK",
+            "name": "CLOCK",
+            "options": {
+                "stream": true
+            },
+            "parameters": [
+                {
+                    "description": "Update interval in seconds (default: 1 second)",
+                    "name": "intervalSeconds",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Displays the current time on a regular interval.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#RETRIGGER",
+            "id": "RETRIGGER",
+            "name": "RETRIGGER",
+            "options": {
+                "stream": true
+            },
+            "parameters": [
+                {
+                    "description": "Input to trigger the function",
+                    "dimensionality": "matrix",
+                    "name": "inputTrigger",
+                    "type": "any"
+                },
+                {
+                    "description": "Update interval in seconds (default: 1 second)",
+                    "name": "intervalSeconds",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Processes JSON data and returns it in a structured format.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#PROCESSJSON",
+            "id": "PROCESSJSON",
+            "name": "PROCESSJSON",
+            "parameters": [
+                {
+                    "description": "The JSON data to process.",
+                    "name": "jsonData",
+                    "type": "any"
+                },
+                {
+                    "description": "The name of the table to create or update.",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "The base name for the table (used for temporary tables).",
+                    "name": "baseName",
+                    "type": "string"
+                },
+                {
+                    "description": "The name of the database to use.",
+                    "name": "dbName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "API Call function - Makes HTTP requests and optionally loads data into database",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#APICALL",
+            "id": "APICALL",
+            "name": "APICALL",
+            "parameters": [
+                {
+                    "description": "API URL to call",
+                    "name": "url",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional table processing: \r\n- Empty/null: Returns JSON formatted as tree-style Excel layout\r\n- 'auto' or 'table': Auto-converts JSON to Excel table format\r\n- 'alltables': Loads all arrays in JSON to database tables\r\n- Specific name: Extracts that property from JSON response",
+                    "name": "tableName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional API name prefix for tables",
+                    "name": "apiName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Cache timeout in seconds (default: 600 = 10 minutes)",
+                    "name": "cacheTimeoutSeconds",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Advanced API Call function - Supports prompt, API key, secret, and token caching.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#APICALLADV",
+            "id": "APICALLADV",
+            "name": "APICALLADV",
+            "parameters": [
+                {
+                    "description": "API endpoint URL",
+                    "name": "url",
+                    "type": "string"
+                },
+                {
+                    "description": "JSON string for the request body (e.g., '{\"text\":\"I love it\",\"return_all_scores\":false}')",
+                    "name": "prompt",
+                    "type": "string"
+                },
+                {
+                    "description": "The API key (optional)",
+                    "name": "apiKey",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional table processing",
+                    "name": "tableName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional secret or password for authentication",
+                    "name": "secret",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional API name prefix for tables",
+                    "name": "apiName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional JSON string for extra headers",
+                    "name": "extraHeadersJson",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Cache timeout for token in seconds (default: 3600)",
+                    "name": "cacheTimeoutSeconds",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Custom worksheet function to import CSV data into the SQLite database.",
+            "id": "IMPORT",
+            "name": "IMPORT",
+            "parameters": [
+                {
+                    "description": "The path to the CSV file.",
+                    "name": "filePath",
+                    "type": "string"
+                },
+                {
+                    "description": "The name of the table to create.",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "The type of file to import (e.g., 'csv', 'xlsx').",
+                    "name": "fileType",
+                    "type": "string"
+                },
+                {
+                    "description": "The path to the workbook (used as the database key).",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Sum field from SQLite database based on criteria",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#SUMFIELD",
+            "id": "SUMFIELD",
+            "name": "SUMFIELD",
+            "parameters": [
+                {
+                    "description": "Table name to sum from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to sum",
+                    "name": "fieldName",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional WHERE clause for filtering",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Volatile version of the SUMFIELD function. Results are not cached.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#VOLATILESUMFIELD",
+            "id": "VOLATILESUMFIELD",
+            "name": "VOLATILESUMFIELD",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [
+                {
+                    "description": "Table name to sum from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to sum",
+                    "name": "fieldName",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional WHERE clause for filtering",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Lookup value from SQLite database",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#LOOKUP",
+            "id": "LOOKUP",
+            "name": "LOOKUP",
+            "parameters": [
+                {
+                    "description": "Table name to lookup from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to return",
+                    "name": "returnField",
+                    "type": "string"
+                },
+                {
+                    "description": "WHERE clause for matching",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Volatile version of Lookup. Results are not cached.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#LOOKUP",
+            "id": "VOLATILELOOKUP",
+            "name": "VOLATILELOOKUP",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [
+                {
+                    "description": "Table name to lookup from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to return",
+                    "name": "returnField",
+                    "type": "string"
+                },
+                {
+                    "description": "WHERE clause for matching",
+                    "name": "whereClause",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Define a view in the database - if you enter a name here, you can reference it in other queries",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the name of the query definition instead of the data",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional prerequisite range for calculations",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Get list of columns in a table",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#GETCOLUMNLIST",
+            "id": "GETCOLUMNLIST",
+            "name": "GETCOLUMNLIST",
+            "parameters": [
+                {
+                    "description": "Name of the table to get columns from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Get list of tables in the database",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#GETTABLELIST",
+            "id": "GETTABLELIST",
+            "name": "GETTABLELIST",
+            "parameters": [
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Get list of query definitions in the database",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#GETQUERYLIST",
+            "id": "GETQUERYLIST",
+            "name": "GETQUERYLIST",
+            "parameters": [
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Paginate data on forms",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#DATAPAGES",
+            "id": "DATAPAGES",
+            "name": "DATAPAGES",
+            "parameters": [
+                {
+                    "description": "Comma-separated list of fields to return",
+                    "name": "fieldList",
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the table or query to pull data from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "A unique field in the table such as a primary key",
+                    "name": "idField",
+                    "type": "string"
+                },
+                {
+                    "description": "Number of rows to return per page",
+                    "name": "rowsPerPage",
+                    "type": "number"
+                },
+                {
+                    "description": "The row of data this formula is in on the form",
+                    "name": "thisRow",
+                    "type": "number"
+                },
+                {
+                    "description": "Page number to pull from",
+                    "name": "currentPage",
+                    "type": "number"
+                },
+                {
+                    "description": "Optional criteria to filter the data",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers (TRUE/FALSE)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages (TRUE/FALSE)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Reference ranges that this query depends on",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Triggers rapid iteration until convergence",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#RAPIDITERATE",
+            "id": "RAPIDITERATE",
+            "name": "RAPIDITERATE",
+            "parameters": [
+                {
+                    "description": "Cell or range containing convergence check value",
+                    "dimensionality": "matrix",
+                    "name": "convergenceCheck",
+                    "type": "any"
+                },
+                {
+                    "description": "Maximum number of iterations (default: 10000)",
+                    "name": "maxIterations",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Convergence tolerance (default: 0.00000001)",
+                    "name": "tolerance",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Auto-start iteration (default: TRUE)",
+                    "name": "autoStart",
+                    "optional": true,
+                    "type": "boolean"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Shows diagnostic information about databases and tables",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#DIAGNOSTICS",
+            "id": "DIAGNOSTICS",
+            "name": "DIAGNOSTICS",
+            "parameters": [
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Append a record to an Excel table/ListObject or in-memory database table with column/value pairs",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#APPEND",
+            "id": "APPEND",
+            "name": "APPEND",
+            "parameters": [
+                {
+                    "description": "Name of the Excel table to append a record to",
+                    "name": "table",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute the append, FALSE to skip (default: FALSE). Use this to prevent appending while updating values.",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "If TRUE, the appended record will only be written to the table in memory and will not be written to the Excel table (default: FALSE)",
+                    "name": "memoryOnly",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty), this is only necessary if memoryOnly is true.",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the first column to update",
+                    "name": "column",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value for the first column",
+                    "name": "value",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Column name and value pairs: column1, value1, column2, value2, ...",
+                    "name": "pairs",
+                    "optional": true,
+                    "repeating": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Update records in an Excel table/ListObject or in-memory database table.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#UPDATE",
+            "id": "UPDATE",
+            "name": "UPDATE",
+            "parameters": [
+                {
+                    "description": "Name of the table to update",
+                    "name": "table",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute update, FALSE to skip (default: FALSE)",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "If TRUE, updates only in-memory database table and not Excel table (default: FALSE)",
+                    "name": "memoryOnly",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty), only necessary if memoryOnly is true",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the column used for WHERE matching",
+                    "name": "criteriaColumn",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value to match in the criteria column",
+                    "name": "criteriaValue",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Name of first column to update",
+                    "name": "column",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value for the first update column",
+                    "name": "value",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Additional column/value pairs: column2, value2, column3, value3, ...",
+                    "name": "pairs",
+                    "optional": true,
+                    "repeating": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Delete records from an Excel table/ListObject or in-memory database table.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#DELETE",
+            "id": "DELETE",
+            "name": "DELETE",
+            "parameters": [
+                {
+                    "description": "Name of the table to delete from",
+                    "name": "table",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute delete, FALSE to skip (default: FALSE)",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "If TRUE, deletes only from in-memory database table and not Excel table (default: FALSE)",
+                    "name": "memoryOnly",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty), only necessary if memoryOnly is true",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Name of the column used for WHERE matching. If not provided or empty, ALL rows will be deleted.",
+                    "name": "criteriaColumn",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Value to match in the criteria column (ignored if criteriaColumn is empty)",
+                    "name": "criteriaValue",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Execute non-query SQL statements (INSERT, UPDATE, DELETE) against in-memory SQLite database.\nOptionally refreshes an Excel table with the results of selecting from the modified table.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#NONQUERY",
+            "id": "NONQUERY",
+            "name": "NONQUERY",
+            "parameters": [
+                {
+                    "description": "SQL statement to execute (INSERT, UPDATE, DELETE)",
+                    "name": "query",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Set to TRUE to execute the query, FALSE shows last execution timestamp",
+                    "name": "run",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "databaseName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional table name - if provided, after executing query, all rows from this table are pushed to corresponding Excel table",
+                    "name": "refreshTable",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Prerequisite range to trigger recalculation when values change",
+                    "dimensionality": "matrix",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Returns the current build version timestamp.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#BUILDVERSION",
+            "id": "BUILDVERSION",
+            "name": "BUILDVERSION",
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        }
+    ]
+}

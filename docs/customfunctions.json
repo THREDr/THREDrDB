@@ -1,0 +1,372 @@
+{
+    "allowCustomDataForDataTypeAny": true,
+    "functions": [
+        {
+            "description": "Export SQLite query result to CSV or XLSX file",
+            "id": "EXPORTQUERY",
+            "name": "EXPORTQUERY",
+            "parameters": [
+                {
+                    "description": "SQLite query to execute",
+                    "name": "query",
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers in the result (true/false)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Export type: \"csv\" or \"xls\"",
+                    "name": "exportType",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional name of the exported file (default: \"ExportedQuery\")",
+                    "name": "fileName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Refresh THREDr Table - Loads data from Excel range into the database",
+            "id": "REFRESHTABLE",
+            "name": "REFRESHTABLE",
+            "parameters": [
+                {
+                    "description": "The Excel range data to load (2D array)",
+                    "dimensionality": "matrix",
+                    "name": "tableData",
+                    "type": "any"
+                },
+                {
+                    "description": "Name to give the table in the database",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Run SQLite query on THREDr database",
+            "id": "QUERY",
+            "name": "QUERY",
+            "parameters": [
+                {
+                    "description": "SQLite query to execute",
+                    "name": "query",
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers in the result (true/false)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional name to save this query as a view",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the query definition name instead of data (true/false)",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Return row count instead of data (true/false)",
+                    "name": "returnRows",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Run SQLite query on THREDr database (Volatile version - recalculates frequently)",
+            "id": "VOLATILEQUERY",
+            "name": "VOLATILEQUERY",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [
+                {
+                    "description": "SQLite query to execute",
+                    "name": "query",
+                    "type": "string"
+                },
+                {
+                    "description": "Include headers in the result (true/false)",
+                    "name": "incHeaders",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional name to save this query as a view",
+                    "name": "queryDefinition",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Return the query definition name instead of data (true/false)",
+                    "name": "returnDefinition",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Return row count instead of data (true/false)",
+                    "name": "returnRows",
+                    "optional": true,
+                    "type": "boolean"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Displays the current time on a regular interval.",
+            "id": "CLOCK",
+            "name": "CLOCK",
+            "options": {
+                "stream": true
+            },
+            "parameters": [
+                {
+                    "description": "Update interval in seconds (default: 1 second)",
+                    "name": "intervalSeconds",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "API Call function - Makes HTTP requests and optionally loads data into database",
+            "id": "APICALL",
+            "name": "APICALL",
+            "parameters": [
+                {
+                    "description": "API URL to call",
+                    "name": "url",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional table processing: \r\n- Empty/null: Returns JSON formatted as tree-style Excel layout\r\n- 'auto' or 'table': Auto-converts JSON to Excel table format\r\n- 'alltables': Loads all arrays in JSON to database tables\r\n- Specific name: Extracts that property from JSON response",
+                    "name": "tableName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional range reference to ensure calculation dependencies",
+                    "name": "prerequisiteRange",
+                    "optional": true,
+                    "type": "any"
+                },
+                {
+                    "description": "Optional API name prefix for tables",
+                    "name": "apiName",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Cache timeout in seconds (default: 600 = 10 minutes)",
+                    "name": "cacheTimeoutSeconds",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
+        },
+        {
+            "description": "Sum field from SQLite database based on criteria",
+            "id": "SUMFIELD",
+            "name": "SUMFIELD",
+            "parameters": [
+                {
+                    "description": "Table name to sum from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to sum",
+                    "name": "fieldName",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional WHERE clause for filtering",
+                    "name": "whereClause",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Lookup value from SQLite database",
+            "id": "LOOKUP",
+            "name": "LOOKUP",
+            "parameters": [
+                {
+                    "description": "Table name to lookup from",
+                    "name": "tableName",
+                    "type": "string"
+                },
+                {
+                    "description": "Field name to return",
+                    "name": "returnField",
+                    "type": "string"
+                },
+                {
+                    "description": "WHERE clause for matching",
+                    "name": "whereClause",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                },
+                {
+                    "description": "Show error messages for debugging (true/false)",
+                    "name": "debugging",
+                    "optional": true,
+                    "type": "boolean"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Get list of tables in the database",
+            "id": "GETTABLELIST",
+            "name": "GETTABLELIST",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [
+                {
+                    "description": "Optional workbook path (uses current workbook if empty)",
+                    "name": "workbookPath",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Returns the current build version timestamp.",
+            "id": "BUILDVERSION",
+            "name": "BUILDVERSION",
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        }
+    ]
+}
