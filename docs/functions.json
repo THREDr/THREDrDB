@@ -1135,6 +1135,28 @@
             "result": {
                 "type": "string"
             }
+        },
+        {
+            "description": "Generates a deterministic numeric hash code from a string for use as a unique table key.\nCombine multiple field values in Excel before passing, e.g. =THREDRDB.HASHKEY(A1&\"|\"&B1).\nThe same input always produces the same output. Returns a positive 32-bit integer as a string.",
+            "helpUrl": "https://app.thredr.net/custom-functions.html#HASHKEY",
+            "id": "HASHKEY",
+            "name": "HASHKEY",
+            "parameters": [
+                {
+                    "description": "The string to hash (concatenate multiple fields with a separator before passing).",
+                    "name": "value",
+                    "type": "string"
+                },
+                {
+                    "description": "Optional separator inserted between values when building the key (default: \"|\").",
+                    "name": "separator",
+                    "optional": true,
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
         }
     ]
 }
