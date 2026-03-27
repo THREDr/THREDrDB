@@ -88,6 +88,12 @@
             color: #0078d4;
             font-weight: bold;
         }
+        .button-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -112,6 +118,21 @@
             <li>Displays convergence chart tracking error magnitude over iterations</li>
         </ul>
         <button class="demo-button" id="run-heat-mass-balance">Run Heat & Mass Balance Demo</button>
+    </div>
+
+    <div class="demo-container">
+        <div class="demo-title">🧱 Beam Optimization Demo</div>
+        <div class="demo-description">
+            Define beam geometry, material properties, and loading. The add-in solves for deflections and reactions, selects the lightest suitable section from a catalog, and iterates automatically until the predicted deflection converges within the allowable limit.
+        </div>
+        <ul class="demo-steps">
+            <li>Assembles the global beam stiffness matrix from sparse SQL contributions and solves for deflections and reactions</li>
+            <li>Selects the lightest catalog section that satisfies the deflection limit</li>
+            <li>Iterates the stiffness adjustment factor automatically until convergence</li>
+        </ul>
+        <div class="button-row">
+            <button class="demo-button" id="run-beam-closed-loop">Run Beam Optimization Demo</button>
+        </div>
     </div>
 
     <div class="demo-container">
@@ -193,6 +214,13 @@
         document.getElementById('run-heat-exchanger').addEventListener('click', function() {
             if (window.parent && window.parent !== window) {
                 window.parent.postMessage({ type: 'RUN_DEMO', demo: 'heat-exchanger' }, '*');
+            }
+        });
+
+        // Closed-loop beam demo button
+        document.getElementById('run-beam-closed-loop').addEventListener('click', function() {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ type: 'RUN_DEMO', demo: 'beam-closed-loop' }, '*');
             }
         });
     </script>

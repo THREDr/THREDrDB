@@ -288,6 +288,12 @@
                     "name": "intervalSeconds",
                     "optional": true,
                     "type": "number"
+                },
+                {
+                    "description": "Tolerance for triggering the function (default: 0.1)",
+                    "name": "tolerance",
+                    "optional": true,
+                    "type": "number"
                 }
             ],
             "result": {
